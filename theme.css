@@ -1,0 +1,62 @@
+.site-theme-toggle {
+    width: 42px;
+    height: 42px;
+    flex: none;
+    border: 1px solid #d6e4da;
+    border-radius: 50%;
+    background: #fff;
+    color: #277452;
+    font-size: 1.15rem;
+    cursor: pointer;
+}
+
+.site-theme-toggle:hover {
+    border-color: #277452;
+}
+
+.site-theme-toggle:focus-visible {
+    outline: 3px solid #277452;
+    outline-offset: 3px;
+}
+
+html[data-theme="dark"] body.theme-page {
+    background: #101914;
+    color: #e4eee7;
+}
+
+html[data-theme="dark"] body.theme-page :is(p, li, td, .header-title span) {
+    color: #bdc9c1;
+}
+
+html[data-theme="dark"] body.theme-page :is(.main-nav, .header, footer, section, article, .section-light, .organisation-card, .table-wrapper, .info-note, .source-card, .card, .mind-card, .mind-center, .mind-note, .validation-box) {
+    background-color: #18241d;
+    border-color: #34483a;
+    color: #e4eee7;
+}
+
+html[data-theme="dark"] body.theme-page :is(h1, h2, h3, h4, strong, th, .header-title strong) {
+    color: #e4eee7;
+}
+
+html[data-theme="dark"] body.theme-ecology .hero {
+    background: linear-gradient(135deg, #14231a, #0d1711);
+}
+
+html[data-theme="dark"] body.theme-discovery .hero {
+    background-color: #18241d;
+    background-blend-mode: multiply;
+}
+
+html[data-theme="dark"] body.theme-page .site-theme-toggle {
+    background: #18241d;
+    border-color: #42594a;
+    color: #9be0b3;
+}
+
+html[data-theme="dark"] body.theme-page .nav-link {
+    color: #d3e1d7;
+}
+
+html[data-theme="dark"] body.theme-page .nav-link.actif {
+    color: #fff;
+}

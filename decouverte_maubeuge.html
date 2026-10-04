@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="theme.js"></script>
+
+<title>Maubeuge - Découverte</title>
+
+<style>
+
+
+   /* VARIABLES */
+
+
+:root {
+    --vert: #173f35;
+    --vert-clair: #285b4d;
+    --rose: #e9b8c4;
+    --rose-fonce: #c98296;
+    --beige: #f7f1e8;
+    --blanc: #ffffff;
+    --texte: #24312d;
+    --gris: #66716d;
+    --ombre: 0 15px 40px rgba(23, 63, 53, 0.12);
+}
+
+
+   /* GENERAL */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--beige);
+    color: var(--texte);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(23, 63, 53, 0.97);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 7%;
+}
+
+.logo {
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--rose);
+}
+
+.menu {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.menu a {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: var(--rose);
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 650px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 80px 8%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(247,241,232,0.98) 0%,
+            rgba(247,241,232,0.88) 48%,
+            rgba(247,241,232,0.25) 100%
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Porte%20de%20Mons%20Maubeuge.jpg")
+        center/cover;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.badge {
+    display: inline-block;
+
+    background: var(--rose);
+    color: var(--vert);
+
+    padding: 8px 15px;
+    border-radius: 50px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 6vw, 78px);
+    line-height: 1;
+    color: var(--vert);
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--rose-fonce);
+}
+
+.hero p {
+    max-width: 570px;
+    font-size: 18px;
+    color: #4d5955;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+
+    background: var(--vert);
+    color: white;
+
+    padding: 14px 23px;
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--rose-fonce);
+    transform: translateY(-3px);
+}
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+section {
+    padding: 90px 8%;
+}
+
+.section-title {
+    max-width: 700px;
+    margin-bottom: 45px;
+}
+
+.section-title small {
+    color: var(--rose-fonce);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-title h2 {
+    font-size: 42px;
+    color: var(--vert);
+    margin: 8px 0 15px;
+}
+
+.section-title p {
+    color: var(--gris);
+}
+
+/* =====================================================
+   HISTOIRE
+===================================================== */
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+    bottom: 0;
+
+    width: 3px;
+    background: var(--rose);
+
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    width: 50%;
+    padding: 20px 40px;
+
+    position: relative;
+
+    opacity: 0;
+    transform: translateY(40px);
+
+    transition: 0.8s;
+}
+
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:nth-child(odd) {
+    margin-left: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    margin-left: 50%;
+}
+
+.timeline-dot {
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    background: var(--vert);
+    border: 4px solid var(--rose);
+
+    border-radius: 50%;
+
+    top: 30px;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -9px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -9px;
+}
+
+.timeline-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--ombre);
+}
+
+.timeline-card h3 {
+    color: var(--vert);
+    margin-bottom: 8px;
+}
+
+.timeline-card strong {
+    color: var(--rose-fonce);
+}
+
+/* =====================================================
+   CARTES
+===================================================== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+
+    box-shadow: var(--ombre);
+
+    transition: 0.4s;
+
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card img {
+    height: 230px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.tag {
+    color: var(--rose-fonce);
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card h3 {
+    color: var(--vert);
+    font-size: 24px;
+    margin: 8px 0;
+}
+
+.card p {
+    color: var(--gris);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.discover {
+    display: inline-block;
+
+    color: var(--vert);
+    font-weight: bold;
+
+    border-bottom: 2px solid var(--rose);
+
+    transition: 0.3s;
+}
+
+.discover:hover {
+    color: var(--rose-fonce);
+    border-color: var(--rose-fonce);
+}
+
+/* =====================================================
+   NATURE
+===================================================== */
+
+.nature {
+    background: var(--vert);
+    color: white;
+}
+
+.nature .section-title h2 {
+    color: white;
+}
+
+.nature .section-title p {
+    color: #d5dfdb;
+}
+
+.nature-card {
+    background: #214c40;
+    border-radius: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.nature-card img {
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+}
+
+.nature-text {
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nature-text h3 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.nature-text p {
+    color: #d9e3df;
+    margin-bottom: 20px;
+}
+
+/* =====================================================
+   ZOO
+===================================================== */
+
+.zoo-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+
+    align-items: center;
+
+    margin-bottom: 50px;
+}
+
+.zoo-text h3 {
+    color: var(--vert);
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.zoo-text p {
+    color: var(--gris);
+    margin-bottom: 20px;
+}
+
+.zoo-photo {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--ombre);
+}
+
+.zoo-photo img {
+    height: 360px;
+    object-fit: cover;
+}
+
+.animals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.animal {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--ombre);
+
+    cursor: pointer;
+
+    transition: 0.35s;
+}
+
+.animal:hover {
+    transform: scale(1.03);
+}
+
+.animal.selected {
+    outline: 4px solid var(--rose);
+}
+
+.animal img {
+    height: 210px;
+    object-fit: cover;
+}
+
+.animal-content {
+    padding: 20px;
+}
+
+.animal h3 {
+    color: var(--vert);
+}
+
+.animal p {
+    color: var(--gris);
+    font-size: 14px;
+}
+
+/* =====================================================
+   COMPARATEUR
+===================================================== */
+
+.comparator {
+    margin-top: 50px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 35px;
+
+    box-shadow: var(--ombre);
+
+    text-align: center;
+}
+
+.comparator h3 {
+    color: var(--vert);
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+#animalName {
+    color: var(--rose-fonce);
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.bar-container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.bar {
+    height: 30px;
+    width: 0%;
+
+    background: linear-gradient(
+        90deg,
+        var(--rose),
+        var(--vert)
+    );
+
+    border-radius: 50px;
+
+    transition: width 1s ease;
+}
+
+/* =====================================================
+   ECOLOGIE PAPREC
+===================================================== */
+
+.ecologie {
+    background: #eee8df;
+}
+
+.paprec {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+
+    background: white;
+
+    border-radius: 22px;
+    overflow: hidden;
+
+    box-shadow: var(--ombre);
+}
+
+.paprec img {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
+}
+
+.paprec-content {
+    padding: 50px;
+}
+
+.paprec-logo {
+    width: 130px;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.paprec-content h3 {
+    color: var(--vert);
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.paprec-content p {
+    color: var(--gris);
+    margin-bottom: 20px;
+}
+
+.paprec-list {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.paprec-list li {
+    margin-bottom: 10px;
+}
+
+.paprec-list li::before {
+    content: "✓";
+    color: var(--rose-fonce);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+.quiz {
+    max-width: 800px;
+    margin: auto;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow: var(--ombre);
+}
+
+.question {
+    margin-bottom: 35px;
+}
+
+.question h3 {
+    color: var(--vert);
+    margin-bottom: 15px;
+}
+
+.answer {
+    display: block;
+    width: 100%;
+
+    padding: 13px 15px;
+
+    margin-bottom: 10px;
+
+    border: 2px solid #e7e1d9;
+
+    background: white;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition: 0.3s;
+}
+
+.answer:hover {
+    border-color: var(--rose);
+}
+
+.answer.correct {
+    background: #d8eee4;
+    border-color: #4f9274;
+}
+
+.answer.wrong {
+    background: #f5d9df;
+    border-color: #c98296;
+}
+
+#score {
+    text-align: center;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    color: var(--vert);
+
+    margin-top: 25px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    background: var(--vert);
+    color: white;
+
+    text-align: center;
+
+    padding: 35px 20px;
+}
+
+footer strong {
+    color: var(--rose);
+}
+
+/* =====================================================
+   ANIMATION APPARITION
+===================================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center
+    }
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 0.4rem;
+    align-items: center
+    }
+.nav-link {
+    padding: 0.55rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    transition: var(--transition-base)
+    }
+.nav-link:hover {
+    color: var(--accent-green);
+    background-color: var(--accent-green-dim)
+    }
+.nav-link.active {
+    color: #fff;
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    font-weight: 700
+    }
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .menu {
+        display: none;
+    }
+
+    .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .animals {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .zoo-intro,
+    .paprec {
+        grid-template-columns: 1fr;
+    }
+
+    .nature-card {
+        grid-template-columns: 1fr;
+    }
+
+    .nature-card img {
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    section {
+        padding: 65px 6%;
+    }
+
+    .hero {
+        padding: 70px 6%;
+        min-height: 600px;
+    }
+
+    .cards,
+    .animals {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+    }
+
+    .timeline::before {
+        left: 10px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even),
+    .timeline-item:nth-child(odd) {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 40px;
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 1px;
+        right: auto;
+    }
+
+    .paprec-content {
+        padding: 30px;
+    }
+
+    .quiz {
+        padding: 25px;
+    }
+}
+
+</style>
+<link href="navigation.css" rel="stylesheet">
+<link href="theme.css" rel="stylesheet">
+</head>
+
+
+<body class="theme-page theme-discovery">
+
+<nav aria-label="Navigation principale" class="main-nav" id="site-nav" role="navigation">
+<ul class="nav-list">
+<li><a class="nav-link" href="index.html">Organisations</a></li>
+<li><a class="nav-link" href="demarche.html">Démarche</a></li>
+<li><a class="nav-link" href="empreinte_ecologique.html">Empreinte écologique</a></li>
+<li><a class="nav-link" href="charte_informatique.html">Charte numérique</a></li>
+<li><a aria-current="page" class="nav-link actif" href="decouverte_maubeuge.html">Découverte de Maubeuge</a></li>
+</ul>
+<button class="site-theme-toggle" data-theme-toggle type="button" aria-label="Passer au mode sombre" aria-pressed="false"><span aria-hidden="true" data-theme-icon>☾</span></button>
+</nav>
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<!-- <nav>
+
+    <div class="logo">
+        MAUBEUGE<span>.</span>
+    </div>
+
+    <ul class="menu">
+
+        <li>
+            <a href="#accueil">Accueil</a>
+        </li>
+
+        <li>
+            <a href="#histoire">Histoire</a>
+        </li>
+
+        <li>
+            <a href="#patrimoine">Patrimoine</a>
+        </li>
+
+        <li>
+            <a href="#nature">Nature</a>
+        </li>
+
+        <li>
+            <a href="#zoo">Zoo</a>
+        </li>
+
+        <li>
+            <a href="#ecologie">Écologie</a>
+        </li>
+
+        <li><a href="#animaux">Animaux</a></li>
+        <li><a href="#commerce">Commerce</a></li>
+        <li><a href="#sante">Santé</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+
+    </ul>
+
+</nav> -->
+
+
+<!-- =====================================================
+     ACCUEIL
+===================================================== -->
+
+<header class="hero" id="accueil">
+
+    <div class="hero-content">
+
+        <span class="badge">
+            ONGLET 5 · DÉCOUVERTE DE MAUBEUGE
+        </span>
+
+        <h1>
+            Maubeuge,<br>
+            une ville à <span>découvrir.</span>
+        </h1>
+
+        <p>
+            Entre patrimoine historique, nature, culture,
+            biodiversité et initiatives écologiques,
+            découvrez les différents visages de Maubeuge.
+        </p>
+
+        <a href="#histoire" class="btn">
+            Commencer la découverte →
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HISTOIRE
+===================================================== -->
+
+<section id="histoire">
+
+    <div class="section-title reveal">
+
+        <small>01 · Histoire</small>
+
+        <h2>
+            Une ville marquée par son histoire
+        </h2>
+
+        <p>
+            Maubeuge possède un patrimoine fortement lié
+            à son passé militaire et aux fortifications de Vauban.
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+
+                <strong>1678</strong>
+
+                <h3>
+                    Les fortifications
+                </h3>
+
+                <p>
+                    Maubeuge est transformée en place forte
+                    afin de renforcer la défense de la frontière.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+
+                <strong>XVIIe siècle</strong>
+
+                <h3>
+                    Vauban
+                </h3>
+
+                <p>
+                    L'ingénieur militaire Vauban participe
+                    à la conception des fortifications de la ville.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+
+                <strong>XXe siècle</strong>
+
+                <h3>
+                    Reconstruction
+                </h3>
+
+                <p>
+                    La ville connaît plusieurs périodes difficiles
+                    et est reconstruite après les destructions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+
+                <strong>Aujourd'hui</strong>
+
+                <h3>
+                    Une ville à découvrir
+                </h3>
+
+                <p>
+                    Maubeuge valorise aujourd'hui son patrimoine,
+                    sa culture, ses espaces naturels et ses acteurs locaux.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PATRIMOINE
+===================================================== -->
+
+<section id="patrimoine">
+
+    <div class="section-title reveal">
+
+        <small>02 · Patrimoine</small>
+
+        <h2>
+            Les lieux emblématiques
+        </h2>
+
+        <p>
+            Quelques lieux qui permettent de découvrir
+            l'histoire et l'identité de Maubeuge.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+
+        <!-- PORTE DE MONS -->
+
+        <article class="card reveal">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Porte%20de%20Mons%20Maubeuge.jpg"
+                alt="Porte de Mons à Maubeuge"
+            >
+
+            <div class="card-content">
+
+                <span class="tag">
+                    Patrimoine
+                </span>
+
+                <h3>
+                    Porte de Mons
+                </h3>
+
+                <p>
+                    La Porte de Mons est un élément majeur
+                    des anciennes fortifications de Maubeuge.
+                </p>
+
+                <a
+                    class="discover"
+                    href="https://www.tourisme-avesnois.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Découvrir →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- VAUBAN -->
+
+        <article class="card reveal">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Maubeuge%20rempart%2004.JPG"
+                alt="Remparts de Maubeuge"
+            >
+
+            <div class="card-content">
+
+                <span class="tag">
+                    Histoire
+                </span>
+
+                <h3>
+                    Les remparts
+                </h3>
+
+                <p>
+                    Les remparts témoignent du rôle stratégique
+                    joué par Maubeuge au cours de son histoire.
+                </p>
+
+                <a
+                    class="discover"
+                    href="https://www.tourisme-avesnois.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Découvrir →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- TOURISME -->
+
+        <article class="card reveal">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Maison%20Folie%2C%20Arri%C3%A8re%20de%20la%20porte%20de%20Mons%2C%20Maubeuge.jpg"
+                alt="Patrimoine de Maubeuge"
+            >
+
+            <div class="card-content">
+
+                <span class="tag">
+                    Culture
+                </span>
+
+                <h3>
+                    Découvrir la ville
+                </h3>
+
+                <p>
+                    Maubeuge possède différents lieux culturels
+                    et historiques à découvrir.
+                </p>
+
+                <a
+                    class="discover"
+                    href="https://www.tourisme-avesnois.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Découvrir →
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     NATURE
+===================================================== -->
+
+<section class="nature" id="nature">
+
+    <div class="section-title reveal">
+
+        <small>03 · Nature</small>
+
+        <h2>
+            Maubeuge entre ville et nature
+        </h2>
+
+        <p>
+            Les espaces verts et la Sambre participent
+            au cadre de vie de la ville.
+        </p>
+
+    </div>
+
+
+    <div class="nature-card reveal">
+
+        <img
+            src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80"
+            alt="Paysage naturel"
+        >
+
+        <div class="nature-text">
+
+            <h3>
+                La Sambre
+            </h3>
+
+            <p>
+                La Sambre traverse le territoire de Maubeuge
+                et participe à son paysage.
+            </p>
+
+            <p>
+                Elle permet également de mettre en valeur
+                la relation entre la ville et son environnement naturel.
+            </p>
+
+            <a
+                href="https://www.tourisme-avesnois.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn"
+            >
+                Découvrir →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ZOO
+===================================================== -->
+
+<section id="zoo">
+
+    <div class="section-title reveal">
+
+        <small>04 · Biodiversité</small>
+
+        <h2>
+            Le Zoo de Maubeuge
+        </h2>
+
+        <p>
+            Situé au pied des remparts, le zoo permet
+            de découvrir de nombreuses espèces animales.
+        </p>
+
+    </div>
+
+
+    <div class="zoo-intro reveal">
+
+        <div class="zoo-text">
+
+            <h3>
+                Un espace consacré aux animaux
+            </h3>
+
+            <p>
+                Le Zoo de Maubeuge présente plus de 250 animaux
+                appartenant à plusieurs dizaines d'espèces.
+            </p>
+
+            <p>
+                Cliquez sur un animal pour découvrir
+                notre petit comparateur de taille.
+            </p>
+
+            <a
+                href="https://www.zoodemaubeuge.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn"
+            >
+                Site officiel du zoo →
+            </a>
+
+        </div>
+
+
+        <div class="zoo-photo">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Giraffe%20%281%29.jpg"
+                alt="Girafe"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- ANIMAUX -->
+
+    <div class="animals">
+
+
+        <!-- GIRAFE -->
+
+        <article
+            class="animal reveal"
+            data-name="Girafe"
+            data-size="100"
+        >
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Giraffe%20%281%29.jpg"
+                alt="Girafe"
+            >
+
+            <div class="animal-content">
+
+                <h3>
+                    Girafe
+                </h3>
+
+                <p>
+                    Un des animaux les plus reconnaissables
+                    grâce à sa très grande taille.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- LION -->
+
+        <article
+            class="animal reveal"
+            data-name="Lion"
+            data-size="55"
+        >
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Le%20lion.jpg"
+                alt="Lion"
+            >
+
+            <div class="animal-content">
+
+                <h3>
+                    Lion
+                </h3>
+
+                <p>
+                    Un grand félin vivant en groupe
+                    et reconnaissable à sa crinière.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ELEPHANT -->
+
+        <article
+            class="animal reveal"
+            data-name="Éléphant d'Asie"
+            data-size="85"
+        >
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Asian%20Elephant.jpg"
+                alt="Éléphant d'Asie"
+            >
+
+            <div class="animal-content">
+
+                <h3>
+                    Éléphant d'Asie
+                </h3>
+
+                <p>
+                    Un mammifère imposant reconnaissable
+                    notamment à sa trompe.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- FLAMANT -->
+
+        <article
+            class="animal reveal"
+            data-name="Flamant rose"
+            data-size="35"
+        >
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Flamingo.JPG"
+                alt="Flamant rose"
+            >
+
+            <div class="animal-content">
+
+                <h3>
+                    Flamant rose
+                </h3>
+
+                <p>
+                    Un oiseau facilement reconnaissable
+                    à son plumage et ses longues pattes.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- AUTRE GIRAFE -->
+
+        <article
+            class="animal reveal"
+            data-name="Girafe"
+            data-size="100"
+        >
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Giraffen.jpg"
+                alt="Girafes"
+            >
+
+            <div class="animal-content">
+
+                <h3>
+                    Les girafes
+                </h3>
+
+                <p>
+                    Leur grande taille leur permet
+                    d'atteindre les feuilles situées en hauteur.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ELEPHANTS -->
+
+        <article
+            class="animal reveal"
+            data-name="Éléphants"
+            data-size="85"
+        >
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Asian%20elephants.jpg"
+                alt="Éléphants d'Asie"
+            >
+
+            <div class="animal-content">
+
+                <h3>
+                    Les éléphants
+                </h3>
+
+                <p>
+                    Les éléphants d'Asie font partie
+                    des plus grands mammifères terrestres.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- COMPARATEUR -->
+
+    <div class="comparator reveal">
+
+        <h3>
+            Comparateur des animaux
+        </h3>
+
+        <p id="animalName">
+            Clique sur un animal
+        </p>
+
+        <div class="bar-container">
+
+            <div
+                class="bar"
+                id="animalBar"
+            ></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ECOLOGIE / PAPREC
+===================================================== -->
+
+<section class="ecologie" id="ecologie">
+
+    <div class="section-title reveal">
+
+        <small>05 · Écologie</small>
+
+        <h2>
+            PAPREC et le recyclage
+        </h2>
+
+        <p>
+            Un acteur de l'économie circulaire
+            spécialisé dans la collecte, le tri
+            et le recyclage des déchets.
+        </p>
+
+    </div>
+
+
+    <div class="paprec reveal">
+
+
+        <div>
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/PAPREC%20%281%29%2C%20Wissous.jpg"
+                alt="Site PAPREC"
+            >
+
+        </div>
+
+
+        <div class="paprec-content">
+
+            <h3>
+                Transformer les déchets
+            </h3>
+
+            <p>
+                PAPREC est un groupe spécialisé dans la collecte,
+                le tri, le recyclage et la valorisation des déchets.
+            </p>
+
+            <p>
+                L'objectif est notamment de donner une seconde vie
+                aux matières et de favoriser l'économie circulaire.
+            </p>
+
+
+            <ul class="paprec-list">
+
+                <li>
+                    Papier et carton
+                </li>
+
+                <li>
+                    Plastiques
+                </li>
+
+                <li>
+                    Métaux
+                </li>
+
+                <li>
+                    Verre
+                </li>
+
+                <li>
+                    Déchets industriels et de chantier
+                </li>
+
+            </ul>
+
+
+            <a
+                href="https://www.paprec.com/fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn"
+            >
+                Découvrir PAPREC →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DÉFENSE ET PROTECTION DES ANIMAUX
+===================================================== -->
+<section id="animaux" class="ecologie">
+    <div class="section-title reveal">
+        <small>06 · Protection animale</small>
+        <h2>Défense et protection des animaux à Maubeuge</h2>
+        <p>
+            Le Refuge Édile Lacroix est une association locale dédiée à la défense
+            et à la protection des animaux à Maubeuge.
+        </p>
+    </div>
+
+    <div class="paprec reveal">
+        <div>
+            <img
+                src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=1200&q=80"
+                alt="Chien dans un refuge animalier"
+            >
+        </div>
+
+        <div class="paprec-content">
+            <span class="tag">Association locale</span>
+            <h3>Le Refuge Édile Lacroix</h3>
+            <p>
+                Situé aux Prés du Saussoir à Maubeuge, le refuge accueille et
+                protège des animaux en difficulté. Son association a pour objet
+                la défense et la protection animale.
+            </p>
+            <p>
+                Il participe notamment à la prise en charge des animaux et à leur
+                placement, avec une démarche de protection et de sensibilisation
+                du public à la cause animale.
+            </p>
+
+            <ul class="paprec-list">
+                <li>Protection et défense des animaux</li>
+                <li>Accueil au refuge</li>
+                <li>Adoption et placement</li>
+                <li>Sensibilisation à la cause animale</li>
+            </ul>
+
+            <a
+                href="https://refuge-edilelacroix.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn"
+            >
+                Découvrir le refuge →
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- =====================================================
+     COMMERCE
+===================================================== -->
+<section id="commerce" class="commerce">
+    <div class="section-title reveal">
+        <small>07 · Commerce</small>
+        <h2>Le commerce à Maubeuge</h2>
+        <p>Le centre-ville et les commerces participent à la vie économique et à l'animation de Maubeuge.</p>
+    </div>
+    <div class="cards">
+        <article class="card reveal">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80" alt="Boutique et commerce">
+            <div class="card-content">
+                <span class="tag">Commerce local</span>
+                <h3>Les commerces du centre</h3>
+                <p>Les commerces de proximité contribuent à l'activité du centre-ville et aux services proposés aux habitants.</p>
+                <a class="discover" href="https://www.ville-maubeuge.fr/" target="_blank" rel="noopener noreferrer">Découvrir la ville →</a>
+            </div>
+        </article>
+        <article class="card reveal">
+            <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1200&q=80" alt="Centre commercial">
+            <div class="card-content">
+                <span class="tag">Vie locale</span>
+                <h3>Shopping et services</h3>
+                <p>Commerces, services et restauration permettent aux habitants de trouver différentes activités dans l'agglomération.</p>
+                <a class="discover" href="https://www.tourisme-avesnois.com/" target="_blank" rel="noopener noreferrer">Découvrir →</a>
+            </div>
+        </article>
+        <article class="card reveal">
+            <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&w=1200&q=80" alt="Marché et commerce local">
+            <div class="card-content">
+                <span class="tag">Proximité</span>
+                <h3>Consommer local</h3>
+                <p>Les commerces locaux participent à l'attractivité du territoire et créent du lien entre les habitants.</p>
+                <a class="discover" href="https://www.ville-maubeuge.fr/" target="_blank" rel="noopener noreferrer">Site de la ville →</a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- =====================================================
+     SANTE
+===================================================== -->
+<section id="sante" class="sante">
+    <div class="section-title reveal">
+        <small>08 · Santé</small>
+        <h2>Le secteur de la santé</h2>
+        <p>Le territoire de Maubeuge dispose de professionnels et de structures de santé qui répondent aux besoins de la population.</p>
+    </div>
+    <div class="cards">
+        <article class="card reveal">
+            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Hôpital">
+            <div class="card-content">
+                <span class="tag">Soins</span>
+                <h3>Centre Hospitalier de Maubeuge</h3>
+                <p>Le Centre Hospitalier de Maubeuge est un acteur important de l'offre de soins du territoire.</p>
+                <a class="discover" href="https://www.ch-maubeuge.fr/" target="_blank" rel="noopener noreferrer">Visiter le site →</a>
+            </div>
+        </article>
+        <article class="card reveal">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80" alt="Professionnels de santé">
+            <div class="card-content">
+                <span class="tag">Professionnels</span>
+                <h3>Les professionnels de santé</h3>
+                <p>Médecins, infirmiers, pharmacies et autres professionnels participent à l'accès aux soins de proximité.</p>
+                <a class="discover" href="https://www.sante.fr/" target="_blank" rel="noopener noreferrer">Trouver un professionnel →</a>
+            </div>
+        </article>
+        <article class="card reveal">
+            <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1200&q=80" alt="Établissement de santé">
+            <div class="card-content">
+                <span class="tag">Territoire</span>
+                <h3>Une offre de soins locale</h3>
+                <p>La santé constitue un secteur essentiel pour les habitants et pour l'attractivité du territoire.</p>
+                <a class="discover" href="https://www.ville-maubeuge.fr/" target="_blank" rel="noopener noreferrer">Découvrir Maubeuge →</a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section id="quiz">
+
+    <div class="section-title reveal">
+
+        <small>06 · Quiz</small>
+
+        <h2>
+            Teste tes connaissances
+        </h2>
+
+        <p>
+            Voyons si tu connais bien Maubeuge !
+        </p>
+
+    </div>
+
+
+    <div class="quiz">
+
+
+        <!-- QUESTION 1 -->
+
+        <div class="question">
+
+            <h3>
+                1. Quel ingénieur militaire est associé
+                aux fortifications de Maubeuge ?
+            </h3>
+
+            <button
+                class="answer"
+                data-correct="false"
+            >
+                Napoléon
+            </button>
+
+            <button
+                class="answer"
+                data-correct="true"
+            >
+                Vauban
+            </button>
+
+            <button
+                class="answer"
+                data-correct="false"
+            >
+                Jules César
+            </button>
+
+        </div>
+
+
+        <!-- QUESTION 2 -->
+
+        <div class="question">
+
+            <h3>
+                2. Quel cours d'eau traverse Maubeuge ?
+            </h3>
+
+            <button
+                class="answer"
+                data-correct="false"
+            >
+                La Seine
+            </button>
+
+            <button
+                class="answer"
+                data-correct="true"
+            >
+                La Sambre
+            </button>
+
+            <button
+                class="answer"
+                data-correct="false"
+            >
+                La Loire
+            </button>
+
+        </div>
+
+
+        <!-- QUESTION 3 -->
+
+        <div class="question">
+
+            <h3>
+                3. Quelle activité correspond principalement
+                à PAPREC ?
+            </h3>
+
+            <button
+                class="answer"
+                data-correct="true"
+            >
+                Le recyclage et la valorisation des déchets
+            </button>
+
+            <button
+                class="answer"
+                data-correct="false"
+            >
+                La construction automobile
+            </button>
+
+            <button
+                class="answer"
+                data-correct="false"
+            >
+                La production de vêtements
+            </button>
+
+        </div>
+
+
+        <!-- QUESTION 4 -->
+
+        <div class="question">
+
+            <h3>
+                4. Où se trouve le Zoo de Maubeuge ?
+            </h3>
+
+            <button
+                class="answer"
+                data-correct="true"
+            >
+                Au pied des remparts
+            </button>
+
+            <button
+                class="answer"
+                data-correct="false"
+            >
+                Dans la gare
+            </button>
+
+            <button
+                class="answer"
+                data-correct="false"
+            >
+                Dans une zone industrielle
+            </button>
+
+        </div>
+
+
+        <div id="score">
+            Score : 0 / 4
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+        <strong>Maubeuge.</strong>
+        Une ville à découvrir sous différents angles.
+    </p>
+
+    <p>
+        Projet SAE · Découverte de Maubeuge
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   ANIMATION AU SCROLL
+===================================================== */
+
+const elements = document.querySelectorAll(
+    ".reveal, .timeline-item, .card"
+);
+
+const observer = new IntersectionObserver(function(entries, obs) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            entry.target.classList.add("show");
+            obs.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
+
+elements.forEach(function(element) {
+    observer.observe(element);
+});
+
+
+/* =====================================================
+   ANIMAUX
+===================================================== */
+
+const animals =
+    document.querySelectorAll(".animal");
+
+const animalName =
+    document.getElementById("animalName");
+
+const animalBar =
+    document.getElementById("animalBar");
+
+
+animals.forEach(function(animal) {
+
+    animal.addEventListener(
+        "click",
+        function() {
+
+            animals.forEach(function(other) {
+
+                other.classList.remove(
+                    "selected"
+                );
+
+            });
+
+            animal.classList.add(
+                "selected"
+            );
+
+
+            const name =
+                animal.dataset.name;
+
+            const size =
+                animal.dataset.size;
+
+
+            animalName.textContent =
+                name +
+                " — comparaison de taille";
+
+
+            animalBar.style.width =
+                size + "%";
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const answers =
+    document.querySelectorAll(".answer");
+
+let score = 0;
+
+let answeredQuestions = [];
+
+
+answers.forEach(function(answer) {
+
+    answer.addEventListener(
+        "click",
+        function() {
+
+            const question =
+                answer.parentElement;
+
+
+            if (
+                question.dataset.answered === "true"
+            ) {
+
+                return;
+
+            }
+
+
+            question.dataset.answered =
+                "true";
+
+
+            const correct =
+                answer.dataset.correct === "true";
+
+
+            if (correct) {
+
+                answer.classList.add(
+                    "correct"
+                );
+
+                score++;
+
+            } else {
+
+                answer.classList.add(
+                    "wrong"
+                );
+
+
+                const correctAnswer =
+                    question.querySelector(
+                        '[data-correct="true"]'
+                    );
+
+
+                if (correctAnswer) {
+
+                    correctAnswer.classList.add(
+                        "correct"
+                    );
+
+                }
+
+            }
+
+
+            document.getElementById(
+                "score"
+            ).textContent =
+                "Score : " +
+                score +
+                " / 4";
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(function(link) {
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            const target =
+                document.querySelector(
+                    link.getAttribute("href")
+                );
+
+
+            if (target) {
+
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        }
+    );
+
+});
+
+</script>
+
+
+</body>
+</html>
+Displaying test modifie.

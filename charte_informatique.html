@@ -1,0 +1,2932 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="theme.js"></script>
+    <link href="navigation.css" rel="stylesheet">
+
+    <title>Charte informatique - Paprec Energies Maubeuge</title>
+
+    <style>
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+
+    --green: #008f5a;
+    --green-dark: #006b43;
+    --green-light: #e6f5ef;
+
+    --black: #111815;
+    --dark: #17211d;
+
+    --gray: #66716c;
+    --gray-light: #8b9691;
+
+    --light: #f6f8f7;
+    --white: #ffffff;
+
+    --border: #e1e8e4;
+
+    --shadow:
+        0 10px 30px rgba(20, 45, 35, 0.08);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--white);
+
+    color: var(--dark);
+
+    line-height: 1.6;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+
+.container {
+
+    width: min(1180px, 92%);
+
+    margin: 0 auto;
+
+}
+
+
+.section {
+    padding: 90px 0;
+}
+
+
+.section-light {
+    background: var(--light);
+}
+
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+
+p {
+    color: var(--gray);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    background: var(--white);
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+
+.header-content {
+
+    min-height: 85px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    text-decoration: none;
+
+}
+
+
+.logo img {
+
+    width: 130px;
+
+    height: auto;
+
+    display: block;
+
+}
+
+
+.header-title {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 2px;
+
+}
+
+
+.header-title span {
+
+    color: var(--gray);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.header-title strong {
+
+    color: var(--dark);
+
+    font-size: 15px;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--dark),
+            #20352c
+        );
+
+    color: white;
+
+    padding: 85px 0;
+
+}
+
+
+.hero-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+}
+
+
+.hero-text {
+    max-width: 720px;
+}
+
+
+.badge {
+
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    color: #d8eee5;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.hero h1 {
+
+    font-size:
+        clamp(42px, 6vw, 72px);
+
+    margin-bottom: 20px;
+
+    letter-spacing: -2px;
+
+}
+
+
+.hero p {
+
+    color: #c7d3ce;
+
+    font-size: 18px;
+
+    max-width: 650px;
+
+}
+
+
+.hero-box {
+
+    min-width: 230px;
+
+    padding: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 14px;
+
+}
+
+
+.hero-box-number {
+
+    color: var(--green);
+
+    font-size: 48px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+}
+
+
+.hero-box strong {
+
+    display: block;
+
+    color: white;
+
+    font-size: 15px;
+
+}
+
+
+.hero-box span {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #aebdb7;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.section-heading {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 22px;
+
+    margin-bottom: 45px;
+
+}
+
+
+.section-number {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 48px;
+
+    height: 48px;
+
+    border-radius: 10px;
+
+    background: var(--green-light);
+
+    color: var(--green-dark);
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+}
+
+
+.eyebrow {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--green);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.section-heading h2 {
+
+    font-size:
+        clamp(30px, 4vw, 42px);
+
+    letter-spacing: -1px;
+
+}
+
+
+.section-description {
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   INTRODUCTION
+========================================================= */
+
+.intro-card {
+
+    max-width: 950px;
+
+    padding: 35px;
+
+    border:
+        1px solid var(--border);
+
+    border-left:
+        5px solid var(--green);
+
+    border-radius: 12px;
+
+    background: var(--white);
+
+    box-shadow: var(--shadow);
+
+}
+
+
+.intro-card p {
+
+    font-size: 16px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.intro-card p:last-child {
+
+    margin-bottom: 0;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+}
+
+
+/* =========================================================
+   CARTES
+========================================================= */
+
+.rules-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+
+}
+
+
+.rule-card {
+
+    height: 370px;
+
+    perspective: 1200px;
+
+}
+
+
+.rule-card-inner {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    transition:
+        transform 0.7s ease;
+
+    transform-style: preserve-3d;
+
+}
+
+
+.rule-card:hover .rule-card-inner {
+
+    transform:
+        rotateY(180deg);
+
+}
+
+
+.rule-card-front,
+.rule-card-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    padding: 30px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: var(--white);
+
+    box-shadow: var(--shadow);
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+}
+
+
+/* =========================================================
+   FACE AVANT
+========================================================= */
+
+.rule-card-front {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+.rule-card-front .rule-number {
+
+    position: absolute;
+
+    top: 25px;
+
+    left: 25px;
+
+    color: var(--green);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+
+.rule-icon {
+
+    width: 85px;
+
+    height: 85px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 25px;
+
+    border-radius: 20px;
+
+    background: var(--green-light);
+
+    font-size: 38px;
+
+}
+
+
+.rule-card-front h3 {
+
+    font-size: 22px;
+
+    color: var(--dark);
+
+    margin-bottom: 25px;
+
+    max-width: 330px;
+
+}
+
+
+.flip-hint {
+
+    color: var(--gray-light);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.2px;
+
+}
+
+
+/* =========================================================
+   FACE ARRIÈRE
+========================================================= */
+
+.rule-card-back {
+
+    transform:
+        rotateY(180deg);
+
+    overflow-y: auto;
+
+}
+
+
+.rule-card-back .rule-number {
+
+    display: block;
+
+    color: var(--green);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    margin-bottom: 12px;
+
+}
+
+
+.rule-card-back h3 {
+
+    font-size: 21px;
+
+    color: var(--dark);
+
+    margin-bottom: 20px;
+
+}
+
+
+.rule-card-back p {
+
+    font-size: 14px;
+
+    margin-bottom: 14px;
+
+}
+
+
+.rule-card-back::after {
+
+    content: "";
+
+    display: block;
+
+    width: 45px;
+
+    height: 3px;
+
+    margin-top: 22px;
+
+    background: var(--green);
+
+    border-radius: 10px;
+
+}
+
+
+/* =========================================================
+   ENGAGEMENT
+========================================================= */
+
+.commitment {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 25px;
+
+    padding: 40px;
+
+    background: var(--dark);
+
+    border-radius: 16px;
+
+    color: white;
+
+}
+
+
+.commitment-icon {
+
+    min-width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: var(--green);
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+}
+
+
+.commitment h2 {
+
+    font-size: 29px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.commitment p {
+
+    color: #bfcac5;
+
+    max-width: 800px;
+
+}
+
+
+/* =========================================================
+   VALIDATION
+========================================================= */
+
+.validation-box {
+
+    padding: 40px;
+
+    background: var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 15px;
+
+    box-shadow: var(--shadow);
+
+}
+
+
+.validation-text {
+
+    margin-bottom: 35px;
+
+}
+
+
+.validation-text h3 {
+
+    font-size: 24px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.validation-text p {
+
+    max-width: 850px;
+
+    font-size: 15px;
+
+}
+
+
+/* =========================================================
+   FORMULAIRE
+========================================================= */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+
+}
+
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.form-group label {
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+.form-group input {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 8px;
+
+    background: #f8faf9;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    color: var(--dark);
+
+    outline: none;
+
+}
+
+
+.form-group input:focus {
+
+    border-color: var(--green);
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 143, 90, 0.10);
+
+}
+
+
+/* =========================================================
+   SIGNATURE
+========================================================= */
+
+.signature-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 180px;
+
+    border:
+        2px dashed #cbd7d1;
+
+    border-radius: 10px;
+
+    background: #fafcfb;
+
+    overflow: hidden;
+
+}
+
+
+.signature-canvas {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    cursor: crosshair;
+
+    touch-action: none;
+
+}
+
+
+.signature-placeholder {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: #a3ada8;
+
+    font-size: 13px;
+
+    pointer-events: none;
+
+    transition: opacity 0.2s;
+
+}
+
+
+.signature-wrapper.has-signature
+.signature-placeholder {
+
+    opacity: 0;
+
+}
+
+
+.clear-button {
+
+    align-self: flex-start;
+
+    margin-top: 8px;
+
+    padding: 8px 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 7px;
+
+    background: white;
+
+    color: var(--gray);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.clear-button:hover {
+
+    border-color: var(--green);
+
+    color: var(--green);
+
+    background: var(--green-light);
+
+}
+
+
+/* =========================================================
+   TELECHARGEMENT
+========================================================= */
+
+.download-area {
+
+    margin-top: 35px;
+
+    padding-top: 28px;
+
+    border-top:
+        1px solid var(--border);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+}
+
+
+.download-area strong {
+
+    display: block;
+
+    color: var(--dark);
+
+    font-size: 16px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.download-area span {
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+}
+
+
+.download-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 14px 22px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: var(--green);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
+
+}
+
+
+.download-button span {
+
+    color: white;
+
+    font-size: 20px;
+
+    line-height: 1;
+
+}
+
+
+.download-button:hover {
+
+    background: var(--green-dark);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 143, 90, 0.2);
+
+}
+
+
+/* =========================================================
+   SOURCES
+========================================================= */
+
+.sources {
+
+    display: grid;
+
+    grid-template-columns:
+        0.8fr 1.2fr;
+
+    gap: 70px;
+
+}
+
+
+.sources h2 {
+
+    font-size: 36px;
+
+}
+
+
+.source-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+
+.source-item {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+    padding: 20px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: var(--white);
+
+}
+
+
+.source-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 70px;
+
+    height: 42px;
+
+    border-radius: 7px;
+
+    background: var(--green-light);
+
+    color: var(--green-dark);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+}
+
+
+.source-item strong {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--dark);
+
+    font-size: 14px;
+
+}
+
+
+.source-item p {
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    background: #0e1512;
+
+    color: white;
+
+    padding: 35px 0;
+
+}
+
+
+.footer-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+}
+
+
+.footer-logo img {
+
+    width: 120px;
+
+}
+
+
+.footer-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.footer-text strong {
+
+    font-size: 14px;
+
+}
+
+
+.footer-text span,
+.footer-right span {
+
+    color: #89968f;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero-content {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .hero-box {
+
+        width: 100%;
+
+    }
+
+
+    .rules-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .sources {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .section {
+
+        padding: 60px 0;
+
+    }
+
+
+    .header-content {
+
+        min-height: 75px;
+
+    }
+
+
+    .header-title {
+
+        display: none;
+
+    }
+
+
+    .logo img {
+
+        width: 115px;
+
+    }
+
+
+    .hero {
+
+        padding: 65px 0;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 44px;
+
+    }
+
+
+    .hero p {
+
+        font-size: 16px;
+
+    }
+
+
+    .section-heading {
+
+        gap: 15px;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size: 30px;
+
+    }
+
+
+    .intro-card {
+
+        padding: 25px;
+
+    }
+
+
+    .rule-card {
+
+        height: 390px;
+
+    }
+
+
+    .rule-card-front,
+    .rule-card-back {
+
+        padding: 25px;
+
+    }
+
+
+    .commitment {
+
+        flex-direction: column;
+
+        padding: 28px;
+
+    }
+
+
+    .validation-box {
+
+        padding: 25px;
+
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .full-width {
+
+        grid-column: auto;
+
+    }
+
+
+    .download-area {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .download-button {
+
+        width: 100%;
+
+    }
+
+
+    .footer-content {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+}
+
+
+/* =========================================================
+   IMPRESSION / PDF
+========================================================= */
+
+@media print {
+    .header {
+        display: block !important;
+        position: static;
+        box-shadow: none;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+    .hero,
+    .download-area,
+    .clear-button,
+    .flip-hint,
+    .footer {
+        display: none !important;
+    }
+
+    .section {
+        padding: 30px 0;
+    }
+
+    .section-light {
+        background: white;
+    }
+
+    .rule-card {
+        height: auto;
+        perspective: none;
+        margin-bottom: 20px;
+        break-inside: avoid;
+    }
+
+    .rule-card-inner {
+        height: auto;
+        transform: none !important;
+    }
+
+    .rule-card-front {
+        display: none;
+    }
+
+    .rule-card-back {
+        position: relative;
+        transform: none;
+        height: auto;
+        min-height: 200px;
+        box-shadow: none;
+    }
+
+    .validation-box {
+        box-shadow: none;
+    }
+
+    .signature-wrapper {
+        border: 1px solid #999;
+    }
+}
+    </style>
+    <link href="theme.css" rel="stylesheet">
+</head>
+
+<body class="theme-page theme-charter">
+
+    <nav aria-label="Navigation principale" class="main-nav">
+        <ul class="nav-list nav-near-center">
+            <li><a class="nav-link" href="index.html">Organisations</a></li>
+            <li><a class="nav-link" href="demarche.html">Démarche</a></li>
+            <li><a class="nav-link" href="empreinte_ecologique.html">Empreinte écologique</a></li>
+            <li><a aria-current="page" class="nav-link actif" href="charte_informatique.html">Charte numérique</a></li>
+            <li><a class="nav-link" href="decouverte_maubeuge.html">Découverte de Maubeuge</a></li>
+        </ul>
+        <button class="site-theme-toggle" data-theme-toggle type="button" aria-label="Passer au mode sombre" aria-pressed="false"><span aria-hidden="true" data-theme-icon>☾</span></button>
+    </nav>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="container header-content">
+
+            <a href="#" class="logo">
+                <img src="https://www.paprec.com/app/uploads/2022/03/paprec_logotype_h_rgb_plan-de-travail-1-300x122-1.jpg" alt="Logo Paprec">
+            </a>
+
+            <div class="header-title">
+                <span>CHARTE INFORMATIQUE</span>
+                <strong>Paprec Energies - Maubeuge</strong>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="container hero-content">
+
+            <div class="hero-text">
+
+                <span class="badge">
+                    DOCUMENT INTERNE
+                </span>
+
+                <h1>
+                    Charte informatique
+                </h1>
+
+                <p>
+                    Règles d'utilisation des équipements informatiques
+                    et des outils numériques de Paprec Energies - Maubeuge.
+                </p>
+
+            </div>
+
+            <div class="hero-box">
+
+                <div class="hero-box-number">
+                    10
+                </div>
+
+                <div>
+                    <strong>règles principales</strong>
+                    <span>
+                        pour une utilisation responsable du numérique
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTENU ================= -->
+
+    <main>
+
+
+        <!-- ================= INTRODUCTION ================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-number">
+                        01
+                    </span>
+
+                    <div>
+
+                        <span class="eyebrow">
+                            INTRODUCTION
+                        </span>
+
+                        <h2>
+                            Objectif de la charte
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="intro-card">
+
+                    <p>
+                        La présente charte informatique définit les règles
+                        d'utilisation des équipements informatiques,
+                        des réseaux et des outils numériques mis à disposition
+                        des salariés de Paprec Energies - Maubeuge.
+                    </p>
+
+                    <p>
+                        Elle a pour objectif de garantir la sécurité du système
+                        d'information, la protection des données de l'entreprise
+                        et le respect de la vie privée des utilisateurs.
+                    </p>
+
+                    <p>
+                        Cette charte constitue une proposition réalisée
+                        dans le cadre d'un projet étudiant et ne constitue
+                        pas la charte interne officielle de Paprec.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= 10 REGLES ================= -->
+
+        <section class="section section-light">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-number">
+                        02
+                    </span>
+
+                    <div>
+
+                        <span class="eyebrow">
+                            RÈGLES D'UTILISATION
+                        </span>
+
+                        <h2>
+                            Les 10 points de la charte
+                        </h2>
+
+                        <p class="section-description">
+                            Survolez une carte pour découvrir la règle.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="rules-grid">
+
+
+                    <!-- CARTE 1 -->
+
+                    <article class="rule-card">
+
+                        <div class="rule-card-inner">
+
+                            <div class="rule-card-front">
+
+                                <span class="rule-number">
+                                    01
+                                </span>
+
+                                <div class="rule-icon">
+                                    💻
+                                </div>
+
+                                <h3>
+                                    Utilisation du matériel personnel
+                                </h3>
+
+                                <span class="flip-hint">
+                                    Survolez pour découvrir
+                                </span>
+
+                            </div>
+
+
+                            <div class="rule-card-back">
+
+                                <span class="rule-number">
+                                    01
+                                </span>
+
+                                <h3>
+                                    Utilisation du matériel personnel
+                                </h3>
+
+                                <p>
+                                    L'utilisation d'un ordinateur, d'un téléphone
+                                    ou de tout autre équipement personnel pour
+                                    accéder aux ressources professionnelles doit
+                                    être autorisée par l'entreprise.
+                                </p>
+
+                                <p>
+                                    Les équipements personnels utilisés dans le
+                                    cadre professionnel doivent respecter les
+                                    règles de sécurité informatique définies
+                                    par l'entreprise.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- CARTE 2 -->
+
+                    <article class="rule-card">
+
+                        <div class="rule-card-inner">
+
+                            <div class="rule-card-front">
+
+                                <span class="rule-number">
+                                    02
+                                </span>
+
+                                <div class="rule-icon">
+                                    👁️
+                                </div>
+
+                                <h3>
+                                    Moyens de surveillance des salariés
+                                </h3>
+
+                                <span class="flip-hint">
+                                    Survolez pour découvrir
+                                </span>
+
+                            </div>
+
+
+                            <div class="rule-card-back">
+
+                                <span class="rule-number">
+                                    02
+                                </span>
+
+                                <h3>
+                                    Moyens de surveillance des salariés
+                                </h3>
+
+                                <p>
+                                    Les systèmes informatiques peuvent faire
+                                    l'objet de mesures de sécurité et de contrôle
+                                    afin de protéger le réseau et les données
+                                    de l'entreprise.
+                                </p>
+
+                                <p>
+                                    Toute mesure de surveillance doit être
+                                    proportionnée, transparente et respecter
+                                    les droits des salariés ainsi que la
+                                    réglementation applicable.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- CARTE 3 -->
+
+                    <article class="rule-card">
+
+                        <div class="rule-card-inner">
+
+                            <div class="rule-card-front">
+
+                                <span class="rule-number">
+                                    03
+                                </span>
+
+                                <div class="rule-icon">
+                                    ✉️
+                                </div>
+
+                                <h3>
+                                    Utilisation de la messagerie électronique
+                                </h3>
+
+                                <span class="flip-hint">
+                                    Survolez pour découvrir
+                                </span>
+
+                            </div>
+
+
+                            <div class="rule-card-back">
+
+                                <span class="rule-number">
+                                    03
+                                </span>
+
+                                <h3>
+                                    Utilisation de la messagerie électronique
+                                </h3>
+
+                                <p>
+                                    La messagerie professionnelle doit
+                                    principalement être utilisée pour les
+                                    activités liées au travail.
+                                </p>
+
+                                <p>
+                                    Les utilisateurs doivent vérifier les
+                                    destinataires avant l'envoi et rester
+                                    particulièrement vigilants face aux
+                                    pièces jointes et aux liens reçus.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- CARTE 4 -->
+
+                    <article class="rule-card">
+
+                        <div class="rule-card-inner">
+
+                            <div class="rule-card-front">
+
+                                <span class="rule-number">
+                                    04
+                                </span>
+
+                                <div class="rule-icon">
+                                    🌐
+                                </div>
+
+                                <h3>
+                                    Accès Internet pour raisons personnelles
+                                </h3>
+
+                                <span class="flip-hint">
+                                    Survolez pour découvrir
+                                </span>
+
+                            </div>
+
+
+                            <div class="rule-card-back">
+
+                                <span class="rule-number">
+                                    04
+                                </span>
+
+                                <h3>
+                                    Accès Internet pour raisons personnelles
+                                </h3>
+
+                                <p>
+                                    Un accès personnel à Internet peut être
+                                    toléré de manière occasionnelle lorsqu'il
+                                    reste raisonnable et ne perturbe pas
+                                    l'activité professionnelle.
+                                </p>
+
+                                <p>
+                                    Il est interdit d'utiliser Internet pour
+                                    accéder à des contenus illégaux ou dangereux
+                                    pour l'entreprise.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- CARTE 5 -->
+
+                    <article class="rule-card">
+
+                        <div class="rule-card-inner">
+
+                            <div class="rule-card-front">
+
+                                <span class="rule-number">
+                                    05
+                                </span>
+
+                                <div class="rule-icon">
+                                    ⚠️
+                                </div>
+
+                                <h3>
+                                    Sanctions
+                                </h3>
+
+                                <span class="flip-hint">
+                                    Survolez pour découvrir
+                                </span>
+
+                            </div>
+
+
+                            <div class="rule-card-back">
+
+                                <span class="rule-number">
+                                    05
+                                </span>
+
+                                <h3>
+                                    Sanctions
+                                </h3>
+
+                                <p>
+                                    Le non-respect des règles de cette charte
+                                    peut entraîner des mesures adaptées à la
+                                    gravité du manquement.
+                                </p>
+
+                                <p>
+                                    Les éventuelles sanctions sont appliquées
+                                    conformément au règlement intérieur et à
+                                    la réglementation en vigueur.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- CARTE 6 -->
+
+                    <article class="rule-card">
+
+                        <div class="rule-card-inner">
+
+                            <div class="rule-card-front">
+
+                                <span class="rule-number">
+                                    06
+                                </span>
+
+                                <div class="rule-icon">
+                                    🔐
+                                </div>
+
+                                <h3>
+                                    Création et gestion des mots de passe
+                                </h3>
+
+                                <span class="flip-hint">
+                                    Survolez pour découvrir
+                                </span>
+
+                            </div>
+
+
+                            <div class="rule-card-back">
+
+                                <span class="rule-number">
+                                    06
+                                </span>
+
+                                <h3>
+                                    Création et gestion des mots de passe
+                                </h3>
+
+                                <p>
+                                    Les mots de passe doivent être suffisamment
+                                    longs, complexes et différents pour chaque
+                                    service.
+                                </p>
+
+                                <p>
+                                    Ils ne doivent jamais être communiqués à
+                                    une autre personne ni être inscrits dans
+                                    un endroit facilement accessible.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- CARTE 7 -->
+
+                    <article class="rule-card">
+
+                        <div class="rule-card-inner">
+
+                            <div class="rule-card-front">
+
+                                <span class="rule-number">
+                                    07
+                                </span>
+
+                                <div class="rule-icon">
+                                    🔒
+                                </div>
+
+                                <h3>
+                                    Utilisation du VPN en télétravail
+                                </h3>
+
+                                <span class="flip-hint">
+                                    Survolez pour découvrir
+                                </span>
+
+                            </div>
+
+
+                            <div class="rule-card-back">
+
+                                <span class="rule-number">
+                                    07
+                                </span>
+
+                                <h3>
+                                    Utilisation du VPN en télétravail
+                                </h3>
+
+                                <p>
+                                    Lorsqu'un VPN professionnel est mis à
+                                    disposition, celui-ci doit être utilisé
+                                    pour accéder aux ressources internes
+                                    depuis l'extérieur de l'entreprise.
+                                </p>
+
+                                <p>
+                                    Le salarié doit utiliser une connexion
+                                    sécurisée et éviter les réseaux Wi-Fi
+                                    publics non sécurisés pour les activités
+                                    professionnelles sensibles.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- CARTE 8 -->
+
+                    <article class="rule-card">
+
+                        <div class="rule-card-inner">
+
+                            <div class="rule-card-front">
+
+                                <span class="rule-number">
+                                    08
+                                </span>
+
+                                <div class="rule-icon">
+                                    🚨
+                                </div>
+
+                                <h3>
+                                    Politique de gestion de crise
+                                </h3>
+
+                                <span class="flip-hint">
+                                    Survolez pour découvrir
+                                </span>
+
+                            </div>
+
+
+                            <div class="rule-card-back">
+
+                                <span class="rule-number">
+                                    08
+                                </span>
+
+                                <h3>
+                                    Politique de gestion de crise
+                                </h3>
+
+                                <p>
+                                    Tout incident informatique ou de sécurité
+                                    doit être signalé rapidement au responsable
+                                    ou au service informatique compétent.
+                                </p>
+
+                                <p>
+                                    Les utilisateurs ne doivent pas tenter de
+                                    supprimer des preuves ou de modifier un
+                                    système compromis sans instruction.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- CARTE 9 -->
+
+                    <article class="rule-card">
+
+                        <div class="rule-card-inner">
+
+                            <div class="rule-card-front">
+
+                                <span class="rule-number">
+                                    09
+                                </span>
+
+                                <div class="rule-icon">
+                                    🛠️
+                                </div>
+
+                                <h3>
+                                    Maintenance des systèmes informatiques
+                                </h3>
+
+                                <span class="flip-hint">
+                                    Survolez pour découvrir
+                                </span>
+
+                            </div>
+
+
+                            <div class="rule-card-back">
+
+                                <span class="rule-number">
+                                    09
+                                </span>
+
+                                <h3>
+                                    Maintenance des systèmes informatiques
+                                </h3>
+
+                                <p>
+                                    Les opérations de maintenance, de mise à
+                                    jour et de dépannage doivent être réalisées
+                                    par les personnes autorisées.
+                                </p>
+
+                                <p>
+                                    Les utilisateurs doivent installer les
+                                    mises à jour demandées et ne pas modifier
+                                    les configurations de sécurité sans
+                                    autorisation.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- CARTE 10 -->
+
+                    <article class="rule-card">
+
+                        <div class="rule-card-inner">
+
+                            <div class="rule-card-front">
+
+                                <span class="rule-number">
+                                    10
+                                </span>
+
+                                <div class="rule-icon">
+                                    ✍️
+                                </div>
+
+                                <h3>
+                                    Signature du salarié
+                                </h3>
+
+                                <span class="flip-hint">
+                                    Survolez pour découvrir
+                                </span>
+
+                            </div>
+
+
+                            <div class="rule-card-back">
+
+                                <span class="rule-number">
+                                    10
+                                </span>
+
+                                <h3>
+                                    Signature du salarié
+                                </h3>
+
+                                <p>
+                                    Le salarié reconnaît avoir pris connaissance
+                                    de la présente charte et s'engage à respecter
+                                    les règles qui y sont présentées.
+                                </p>
+
+                                <p>
+                                    La signature permet d'attester de la prise
+                                    de connaissance de la charte.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= ENGAGEMENT ================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="commitment">
+
+                    <div class="commitment-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <span class="eyebrow">
+                            ENGAGEMENT
+                        </span>
+
+                        <h2>
+                            Une utilisation responsable du numérique
+                        </h2>
+
+                        <p>
+                            Chaque utilisateur contribue à la sécurité
+                            du système d'information. Le respect des bonnes
+                            pratiques permet de protéger les données,
+                            les équipements et l'activité de l'entreprise.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= VALIDATION ================= -->
+
+        <section class="section section-light">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-number">
+                        03
+                    </span>
+
+                    <div>
+
+                        <span class="eyebrow">
+                            VALIDATION
+                        </span>
+
+                        <h2>
+                            Prise de connaissance
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="validation-box">
+
+                    <div class="validation-text">
+
+                        <h3>
+                            Attestation du salarié
+                        </h3>
+
+                        <p>
+                            Je soussigné(e), reconnais avoir pris connaissance
+                            de la présente charte informatique et m'engage
+                            à respecter les règles qui y sont définies.
+                        </p>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="nom">
+                                Nom
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nom"
+                                name="nom"
+                                placeholder="Entrez votre nom"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="prenom">
+                                Prénom
+                            </label>
+
+                            <input
+                                type="text"
+                                id="prenom"
+                                name="prenom"
+                                placeholder="Entrez votre prénom"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="date">
+                                Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                            >
+
+                        </div>
+
+
+<div class="form-group">
+    <label for="fonction">Fonction</label>
+    <select id="fonction">
+        <option value="">Sélectionnez votre fonction</option>
+        <option value="Direction">Direction</option>
+        <option value="Ressources humaines">Ressources humaines</option>
+        <option value="Informatique">Informatique</option>
+        <option value="Administratif">Administratif</option>
+        <option value="Comptabilité">Comptabilité</option>
+        <option value="Commercial">Commercial</option>
+        <option value="Production">Production</option>
+        <option value="Maintenance">Maintenance</option>
+        <option value="Logistique">Logistique</option>
+        <option value="Qualité / Sécurité / Environnement">Qualité / Sécurité / Environnement</option>
+        <option value="Technicien">Technicien</option>
+        <option value="Opérateur">Opérateur</option>
+        <option value="Stagiaire">Stagiaire</option>
+        <option value="Alternant">Alternant</option>
+        <option value="Autre">Autre</option>
+    </select>
+</div>
+
+
+                        <!-- ================= SIGNATURE ================= -->
+
+                        <div class="form-group full-width">
+
+                            <label>
+                                Signature
+                            </label>
+
+                            <div class="signature-wrapper">
+
+                                <canvas
+                                    id="signatureCanvas"
+                                    class="signature-canvas"
+                                ></canvas>
+
+                                <div class="signature-placeholder">
+                                    Signez ici avec votre souris ou votre doigt
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                id="clearSignature"
+                                class="clear-button"
+                            >
+                                Effacer la signature
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- ================= TELECHARGEMENT ================= -->
+
+                    <div class="download-area">
+
+                        <div>
+
+                            <strong>
+                                Charte terminée ?
+                            </strong>
+
+                            <span>
+                                Vérifiez vos informations puis téléchargez
+                                la charte au format PDF.
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="downloadButton"
+                            class="download-button"
+                        >
+                            <span>↓</span>
+                            Télécharger la charte
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SOURCES ================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="sources">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            DOCUMENTATION
+                        </span>
+
+                        <h2>
+                            Sources utilisées
+                        </h2>
+
+                    </div>
+
+
+                    <div class="source-list">
+
+
+                        <div class="source-item">
+
+                            <span class="source-icon">
+                                CNIL
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Commission Nationale de l'Informatique
+                                    et des Libertés
+                                </strong>
+
+                                <p>
+                                    Recommandations relatives à la sécurité,
+                                    à la protection des données et à
+                                    l'utilisation des outils numériques.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="source-item">
+
+                            <span class="source-icon">
+                                CYBER
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Cybermalveillance.gouv.fr
+                                </strong>
+
+                                <p>
+                                    Bonnes pratiques concernant les mots
+                                    de passe, la sécurité informatique,
+                                    les sauvegardes et les incidents.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="source-item">
+
+                            <span class="source-icon">
+                                PAPREC
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Paprec
+                                </strong>
+
+                                <p>
+                                    Informations générales sur le groupe
+                                    et ses activités dans le domaine
+                                    du recyclage et de la valorisation
+                                    des déchets.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <div class="footer-logo">
+
+                <img
+                    src="images/paprec_logotype_h_white-1-1-1.png"
+                    alt="Logo Paprec"
+                >
+
+            </div>
+
+
+            <div class="footer-text">
+
+                <strong>
+                    Paprec Energies - Maubeuge
+                </strong>
+
+                <span>
+                    Charte informatique — Projet SAE
+                </span>
+
+            </div>
+
+
+            <div class="footer-right">
+
+                <span>
+                    Document étudiant
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+/* =========================================================
+   SIGNATURE
+========================================================= */
+
+const canvas = document.getElementById("signatureCanvas");
+const ctx = canvas.getContext("2d");
+
+const signatureWrapper =
+    document.querySelector(".signature-wrapper");
+
+const clearButton =
+    document.getElementById("clearSignature");
+
+const downloadButton =
+    document.getElementById("downloadButton");
+
+
+let drawing = false;
+let hasSignature = false;
+
+
+/* =========================================================
+   ADAPTER LE CANVAS À SA TAILLE
+========================================================= */
+
+function resizeCanvas() {
+
+    const rect = canvas.getBoundingClientRect();
+
+    const oldCanvas = document.createElement("canvas");
+
+    oldCanvas.width = canvas.width;
+    oldCanvas.height = canvas.height;
+
+    if (canvas.width > 0 && canvas.height > 0) {
+        oldCanvas
+            .getContext("2d")
+            .drawImage(canvas, 0, 0);
+    }
+
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.strokeStyle = "#17211d";
+
+    if (oldCanvas.width > 0 && oldCanvas.height > 0) {
+
+        ctx.drawImage(
+            oldCanvas,
+            0,
+            0,
+            oldCanvas.width,
+            oldCanvas.height,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+    }
+}
+
+
+resizeCanvas();
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+/* =========================================================
+   POSITION DE LA SOURIS / DU DOIGT
+========================================================= */
+
+function getPosition(event) {
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+    return {
+
+        x:
+            event.clientX - rect.left,
+
+        y:
+            event.clientY - rect.top
+
+    };
+}
+
+
+/* =========================================================
+   COMMENCER LA SIGNATURE
+========================================================= */
+
+canvas.addEventListener(
+    "pointerdown",
+    function (event) {
+
+        drawing = true;
+
+        canvas.setPointerCapture(event.pointerId);
+
+        const position =
+            getPosition(event);
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            position.x,
+            position.y
+        );
+
+    }
+);
+
+
+/* =========================================================
+   DESSINER
+========================================================= */
+
+canvas.addEventListener(
+    "pointermove",
+    function (event) {
+
+        if (!drawing) {
+            return;
+        }
+
+        const position =
+            getPosition(event);
+
+        ctx.lineTo(
+            position.x,
+            position.y
+        );
+
+        ctx.stroke();
+
+        hasSignature = true;
+
+        signatureWrapper.classList.add(
+            "has-signature"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   TERMINER LA SIGNATURE
+========================================================= */
+
+function stopDrawing() {
+
+    drawing = false;
+
+    ctx.closePath();
+
+}
+
+
+canvas.addEventListener(
+    "pointerup",
+    stopDrawing
+);
+
+
+canvas.addEventListener(
+    "pointercancel",
+    stopDrawing
+);
+
+
+canvas.addEventListener(
+    "pointerleave",
+    function () {
+
+        if (drawing) {
+            stopDrawing();
+        }
+
+    }
+);
+
+
+/* =========================================================
+   EFFACER LA SIGNATURE
+========================================================= */
+
+clearButton.addEventListener(
+    "click",
+    function () {
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        hasSignature = false;
+
+        signatureWrapper.classList.remove(
+            "has-signature"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   TÉLÉCHARGEMENT / PDF
+========================================================= */
+
+downloadButton.addEventListener(
+    "click",
+    function () {
+
+        const nom =
+            document.getElementById("nom").value.trim();
+
+        const prenom =
+            document.getElementById("prenom").value.trim();
+
+        const date =
+            document.getElementById("date").value.trim();
+
+        const fonction =
+            document.getElementById("fonction").value.trim();
+
+
+        /*
+         * Vérification des informations
+         */
+
+        if (
+            nom === "" ||
+            prenom === "" ||
+            date === "" ||
+            fonction === ""
+        ) {
+
+            alert(
+                "Veuillez remplir le nom, le prénom, la date et la fonction avant de télécharger la charte."
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * Vérification de la signature
+         */
+
+        if (!hasSignature) {
+
+            alert(
+                "Veuillez signer la charte avant de la télécharger."
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * Ouvre la fenêtre d'impression.
+         * Dans cette fenêtre :
+         *
+         * Destination → Enregistrer au format PDF
+         */
+
+        window.print();
+
+    }
+    
+);
+    </script>
+
+</body>
+
+</html>

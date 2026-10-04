@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="clair">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="navigation.css" rel="stylesheet">
+<link href="theme.css" rel="stylesheet">
+<script src="theme.js"></script>
+<title>Démarche – Découverte Maubeuge</title>
+<script>
+  /* Applique le thème mémorisé avant l'affichage (évite un flash) */
+  (function () {
+    var theme = null;
+    try { theme = localStorage.getItem("theme"); } catch (e) {}
+    if (!theme) theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    if (theme === "sombre") theme = "dark";
+    if (theme === "clair") theme = "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<style>
+/* ============ 1. VARIABLES (thèmes) ============ */
+:root {
+  --vert: #2f8f5b;
+  --vert-fonce: #1f6b42;
+  --vert-clair: #dff3e7;
+  --fond: #f4f8f5;
+  --texte: #1c2a22;
+  --texte-doux: #55675c;
+  --carte: #ffffff;
+  --bordure: #d6e4da;
+  --ombre: 0 2px 10px rgba(20, 60, 38, .07);
+  --nav: rgba(255, 255, 255, .85);
+  --rayon: 14px;
+  --police-titre: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --police: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+[data-theme="dark"] {
+  --vert: #4cc384;
+  --vert-fonce: #7fdcab;
+  --vert-clair: #1c3a2b;
+  --fond: #121a16;
+  --texte: #e6efe9;
+  --texte-doux: #9db3a5;
+  --carte: #1a2520;
+  --bordure: #2b3b33;
+  --ombre: 0 2px 10px rgba(0, 0, 0, .3);
+  --nav: rgba(18, 26, 22, .85);
+}
+
+/* ============ 2. BASE ============ */
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--police);
+  background: var(--fond);
+  color: var(--texte);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background .4s ease, color .4s ease;
+}
+h1, h2, h3 { font-family: var(--police-titre); line-height: 1.2; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--vert); outline-offset: 3px; }
+.conteneur { width: min(1100px, 100% - 2rem); margin-inline: auto; }
+
+/* ============ 3. NAVIGATION ============ */
+nav {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--nav);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--bordure);
+  transition: background .4s ease, border-color .4s ease;
+}
+.nav-interne { display: flex; align-items: center; gap: .5rem; padding: .6rem 0; }
+.liens { display: flex; flex-wrap: wrap; gap: .25rem; flex: 1; }
+.liens a {
+  position: relative; padding: .45rem .8rem; border-radius: 999px;
+  color: var(--texte-doux); text-decoration: none; font-size: .95rem; font-weight: 500;
+  transition: color .25s, background .25s;
+}
+.liens a:hover { color: var(--vert-fonce); background: var(--vert-clair); }
+.liens a.actif { color: #fff; background: var(--vert); }
+[data-theme="dark"] .liens a.actif { color: #0d1a13; }
+
+#bouton-theme {
+  width: 42px; height: 42px; flex: none; border-radius: 50%;
+  border: 1px solid var(--bordure); background: var(--carte); color: var(--texte);
+  font-size: 1.15rem; cursor: pointer; overflow: hidden;
+  transition: background .4s, border-color .4s, transform .3s;
+}
+#bouton-theme:hover { transform: rotate(15deg); }
+#bouton-theme span { display: inline-block; transition: transform .5s ease; }
+#bouton-theme.tourne span { transform: rotate(360deg); }
+
+/* ============ 4. HERO ============ */
+.hero { padding: 4.5rem 0 3rem; }
+.hero h1 {
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  letter-spacing: -.02em;
+  margin-bottom: 1rem;
+}
+.hero p { max-width: 60ch; color: var(--texte-doux); font-size: 1.1rem; }
+.parcours {
+  list-style: none; padding: 0; margin-top: 2.5rem;
+  display: flex; align-items: center; flex-wrap: wrap; gap: .5rem;
+}
+.parcours li {
+  padding: .45rem 1rem; border-radius: 999px; font-size: .9rem; font-weight: 600;
+  background: var(--vert-clair); color: var(--vert-fonce);
+}
+.parcours li.relie { padding: 0; background: none; width: 28px; height: 2px; background: var(--vert); opacity: .5; }
+
+/* Animation de chargement (une seule séquence) */
+.hero h1, .hero p, .parcours { animation: monte .8s ease both; }
+.hero p { animation-delay: .15s; }
+.parcours { animation-delay: .3s; }
+@keyframes monte { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* ============ 5. SECTIONS ============ */
+section { padding: 2.5rem 0; }
+.titre-section { font-size: clamp(1.6rem, 4vw, 2.1rem); margin-bottom: .5rem; }
+.intro { color: var(--texte-doux); margin-bottom: 1.8rem; max-width: 65ch; }
+
+.grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+.carte {
+  background: var(--carte); border: 1px solid var(--bordure);
+  border-radius: var(--rayon); padding: 1.3rem; box-shadow: var(--ombre);
+  transition: transform .3s ease, border-color .3s, background .4s;
+}
+.carte:hover { transform: translateY(-4px); border-color: var(--vert); }
+.carte h3 { font-size: 1.2rem; display: flex; align-items: center; gap: .6rem; margin-bottom: .8rem; }
+.icone {
+  display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px;
+  background: var(--vert-clair); font-size: 1.15rem;
+}
+.carte ul { padding-left: 1.1rem; color: var(--texte-doux); font-size: .95rem; }
+.carte li { margin-bottom: .35rem; }
+.carte li::marker { color: var(--vert); }
+.apprentissages { grid-column: 1 / -1; }
+.apprentissages ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem 1.5rem; }
+
+/* ============ 6. IDÉES RETENUES ============ */
+.selection {
+  display: flex; align-items: center; gap: .8rem; margin-bottom: 1.5rem; flex-wrap: wrap;
+}
+.selection .etat { font-weight: 600; font-size: .95rem; }
+.selection .barre {
+  flex: 1; min-width: 60px; height: 4px; border-radius: 4px;
+  background: var(--bordure); position: relative; overflow: hidden;
+}
+.selection .barre::after {
+  content: ""; position: absolute; inset: 0; background: var(--vert);
+  transform: scaleX(0); transform-origin: left; transition: transform 1.4s ease .3s;
+}
+.selection.visible .barre::after { transform: scaleX(1); }
+.selection .final { color: var(--vert-fonce); }
+.retenue { border-left: 4px solid var(--vert); }
+
+/* ============ 7. TIMELINE ============ */
+.timeline { list-style: none; padding: 0; margin: 0 0 0 1rem; border-left: 2px solid var(--vert); }
+.timeline li { position: relative; padding: 0 0 1.8rem 2rem; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline .numero {
+  position: absolute; left: -1.05rem; top: 0; width: 2rem; height: 2rem; border-radius: 50%;
+  display: grid; place-items: center; font-weight: 700; font-size: .85rem;
+  background: var(--vert); color: #fff; box-shadow: 0 0 0 5px var(--fond);
+}
+[data-theme="dark"] .timeline .numero { color: #0d1a13; }
+.timeline h3 { font-size: 1.2rem; }
+.timeline p { color: var(--texte-doux); font-size: .95rem; }
+
+/* ============ 8. TABLEAU DES TÂCHES ============ */
+.tableau { border: 1px solid var(--bordure); border-radius: var(--rayon); overflow: hidden; background: var(--carte); box-shadow: var(--ombre); }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: .8rem 1rem; text-align: left; }
+thead th { background: var(--vert); color: #fff; font-size: .9rem; }
+[data-theme="dark"] thead th { color: #0d1a13; }
+tbody tr { transition: background .2s; }
+tbody tr:not(.etape):nth-child(even) { background: color-mix(in srgb, var(--vert-clair) 35%, transparent); }
+tbody tr:not(.etape):hover { background: var(--vert-clair); }
+td { border-top: 1px solid var(--bordure); }
+tr.etape td {
+  background: var(--vert-clair); color: var(--vert-fonce);
+  font-family: var(--police-titre); font-weight: 700; font-size: 1.05rem; border-top: 2px solid var(--vert);
+}
+.statut {
+  display: inline-block; padding: .2rem .75rem; border-radius: 999px; font-size: .82rem; font-weight: 600;
+  background: var(--vert-clair); color: var(--vert-fonce); border: 1px solid var(--vert);
+}
+.statut::before { content: "✓ "; }
+.tableau.visible .statut { animation: badge .6s ease both; }
+@keyframes badge { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
+
+/* ============ 9. CONCLUSION & FOOTER ============ */
+.conclusion {
+  background: var(--vert); color: #fff; border-radius: var(--rayon); padding: 2rem;
+}
+[data-theme="dark"] .conclusion { color: #0d1a13; }
+.conclusion h2 { font-size: 1.6rem; margin-bottom: .6rem; }
+.conclusion p { max-width: 65ch; }
+footer {
+  margin-top: 3rem; padding: 1.5rem 1rem; text-align: center;
+  border-top: 1px solid var(--bordure); color: var(--texte-doux); font-size: .9rem;
+}
+footer strong { color: var(--vert-fonce); }
+
+/* ============ 10. APPARITION AU SCROLL ============ */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.carte.reveal.visible:hover { transform: translateY(-4px); }
+
+/* ============ 11. RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .grille { grid-template-columns: repeat(2, 1fr); }
+  .apprentissages ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .grille { grid-template-columns: 1fr; }
+  .apprentissages ul { grid-template-columns: 1fr; }
+  .hero { padding-top: 2.5rem; }
+  .parcours li.relie { width: 14px; }
+  /* Tableau transformé en cartes verticales */
+  thead { position: absolute; left: -9999px; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  tr:not(.etape) { padding: .6rem 0; border-top: 1px solid var(--bordure); }
+  tr:not(.etape) td { border: 0; padding: .25rem 1rem; }
+  tr:not(.etape) td::before {
+    content: attr(data-label); display: block; font-size: .75rem; color: var(--texte-doux);
+  }
+  tr.etape td { border-top: 2px solid var(--vert); }
+}
+
+/* ============ 12. ACCESSIBILITÉ : mouvement réduit ============ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+  .selection .barre::after { transform: scaleX(1); }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav aria-label="Navigation principale" class="main-nav">
+  <div class="conteneur nav-interne">
+    <ul class="nav-list">
+      <li><a class="nav-link" href="index.html">Organisations</a></li>
+      <li><a class="nav-link actif" href="demarche.html" aria-current="page">Démarche</a></li>
+      <li><a class="nav-link" href="empreinte_ecologique.html">Empreinte écologique</a></li>
+      <li><a class="nav-link" href="charte_informatique.html">Charte numérique</a></li>
+      <li><a class="nav-link" href="decouverte_maubeuge.html">Découverte de Maubeuge</a></li>
+    </ul>
+    <button id="bouton-theme" data-theme-toggle type="button" aria-label="Passer en mode sombre" aria-pressed="false">
+      <span aria-hidden="true" data-theme-icon>🌙</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="conteneur">
+    <h1>Notre démarche</h1>
+    <p>Cette page présente la manière dont notre groupe a imaginé, organisé, développé et finalisé le site sur Maubeuge : nos idées de départ, puis la liste des tâches réalisées, qui s'en est chargé et dans quel ordre.</p>
+    <ol class="parcours" aria-label="Parcours du projet">
+      <li>Idées</li><li class="relie" aria-hidden="true"></li>
+      <li>Préparation</li><li class="relie" aria-hidden="true"></li>
+      <li>Création</li><li class="relie" aria-hidden="true"></li>
+      <li>Finalisation</li>
+    </ol>
+  </div>
+</header>
+
+<main class="conteneur">
+
+  <!-- ============ BRAINSTORMING ============ -->
+  <section aria-labelledby="t-brainstorming">
+    <h2 class="titre-section reveal" id="t-brainstorming">Brainstorming initial</h2>
+    <p class="intro reveal">Tout est parti d'une séance d'idées en groupe, avant de choisir ce que nous allions vraiment réaliser.</p>
+    <div class="grille">
+      <article class="carte reveal">
+        <h3><span class="icone" aria-hidden="true">💡</span>Idées</h3>
+        <ul>
+          <li>Le patrimoine : les fortifications de Vauban</li>
+          <li>La Sambre et la nature</li>
+          <li>L'économie locale</li>
+          <li>Deux organisations locales : l'entreprise Paprec et l'association de défense des animaux</li>
+          <li>L'histoire de Maubeuge en quelques dates</li>
+          <li>Les lieux à visiter : le zoo, les remparts, les parcs</li>
+          <li>La gastronomie et les spécialités du Nord</li>
+          <li>Les transports : comment venir à Maubeuge</li>
+          <li>Les chiffres clés de la ville</li>
+        </ul>
+      </article>
+      <article class="carte reveal">
+        <h3><span class="icone" aria-hidden="true">⚙️</span>Fonctionnalités possibles</h3>
+        <ul>
+          <li>Un diaporama de photos de la ville</li>
+          <li>Un petit quiz sur Maubeuge</li>
+          <li>Un tableau comparatif des deux organisations</li>
+          <li>Une carte avec les lieux importants</li>
+          <li>Une page « À propos » du groupe</li>
+        </ul>
+      </article>
+      <article class="carte reveal">
+        <h3><span class="icone" aria-hidden="true">👥</span>Organisation du projet</h3>
+        <ul>
+          <li>Une liste de tâches pour répartir le travail</li>
+          <li>Des réunions régulières du groupe</li>
+          <li>Un dossier partagé pour les fichiers</li>
+        </ul>
+      </article>
+      <article class="carte reveal">
+        <h3><span class="icone" aria-hidden="true">🧱</span>Structure</h3>
+        <ul>
+          <li>5 onglets, un fichier HTML chacun</li>
+          <li>Un menu identique sur toutes les pages</li>
+          <li>Une feuille de style commune</li>
+          <li>Une partie interactive</li>
+          <li>Site codé entièrement en HTML/CSS</li>
+        </ul>
+      </article>
+      <article class="carte reveal">
+        <h3><span class="icone" aria-hidden="true">🎨</span>Design</h3>
+        <ul>
+          <li>Bleu Sambre et rouge brique</li>
+          <li>Fond gris très clair, page aérée</li>
+          <li>Menu en bleu en haut de page</li>
+          <li>Polices déjà installées, sans téléchargement</li>
+        </ul>
+      </article>
+      <article class="carte reveal">
+        <h3><span class="icone" aria-hidden="true">🎯</span>Objectifs</h3>
+        <ul>
+          <li>Faire découvrir Maubeuge avec un site complet, interactif et informatif</li>
+          <li>Respecter notre charte numérique</li>
+          <li>Être prêts pour l'oral de 5 à 10 minutes</li>
+          <li>Un site léger et écoresponsable, avec un ton simple et accueillant</li>
+        </ul>
+      </article>
+      <article class="carte reveal">
+        <h3><span class="icone" aria-hidden="true">🧭</span>Public cible</h3>
+        <ul>
+          <li>Les habitants de Maubeuge et des environs</li>
+          <li>Les visiteurs et les touristes</li>
+          <li>Les enseignants qui évaluent le projet</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ IDÉES RETENUES ============ -->
+  <section aria-labelledby="t-retenues">
+    <h2 class="titre-section reveal" id="t-retenues">Idées retenues</h2>
+    <p class="intro reveal">Parmi toutes les idées proposées, voici celles que le groupe a choisies pour le site.</p>
+    <div class="selection reveal" aria-hidden="true">
+      <span class="etat">Idées proposées</span>
+      <span class="barre"></span>
+      <span class="etat">Sélection</span>
+      <span class="barre"></span>
+      <span class="etat final">Idées retenues ✓</span>
+    </div>
+    <div class="grille">
+      <article class="carte retenue reveal">
+        <h3><span class="icone" aria-hidden="true">📚</span>Contenu</h3>
+        <ul>
+          <li>L'économie locale</li>
+          <li>Deux organisations : Paprec et l'association de défense des animaux</li>
+        </ul>
+      </article>
+      <article class="carte retenue reveal">
+        <h3><span class="icone" aria-hidden="true">🖱️</span>Fonctionnement</h3>
+        <ul>
+          <li>Une partie interactive</li>
+          <li>Un menu identique sur toutes les pages</li>
+        </ul>
+      </article>
+      <article class="carte retenue reveal">
+        <h3><span class="icone" aria-hidden="true">🌱</span>Esprit du projet</h3>
+        <ul>
+          <li>Un site léger et écoresponsable</li>
+          <li>Un ton simple et accueillant</li>
+        </ul>
+      </article>
+      <article class="carte retenue reveal apprentissages">
+        <h3><span class="icone" aria-hidden="true">💬</span>Apprentissages de l’équipe</h3>
+        <ul>
+          <li><strong>Samuel – Organisations :</strong> J’ai retenu l’importance de bien organiser et présenter les informations.</li>
+          <li><strong>Ahmad – Charte informatique :</strong> J’ai retenu l’importance d’avoir un design cohérent et professionnel.</li>
+          <li><strong>Sofia – Empreinte écologique :</strong> J’ai appris que le numérique a aussi un impact sur l’environnement.</li>
+          <li><strong>Fernande – Empreinte écologique :</strong> J’ai retenu qu’un site peut être optimisé pour réduire son impact écologique.</li>
+          <li><strong>Nathan – Démarche :</strong> J’ai appris qu’une bonne organisation est essentielle pour réussir un projet.</li>
+          <li><strong>Fatoumata – Travail en équipe :</strong> J’ai retenu que la communication et la collaboration sont importantes dans la réussite d’un projet.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ TIMELINE ============ -->
+  <section aria-labelledby="t-timeline">
+    <h2 class="titre-section reveal" id="t-timeline">Les trois grandes étapes</h2>
+    <p class="intro reveal">Le projet s'est déroulé en trois phases, détaillées dans la liste des tâches ci-dessous.</p>
+    <ol class="timeline">
+      <li class="reveal">
+        <span class="numero" aria-hidden="true">1</span>
+        <h3>Préparer le projet</h3>
+        <p>Brainstorming, choix du HTML/CSS, répartition des onglets et charte graphique.</p>
+      </li>
+      <li class="reveal">
+        <span class="numero" aria-hidden="true">2</span>
+        <h3>Créer le site</h3>
+        <p>Squelette commun, puis réalisation des cinq onglets par les membres du groupe.</p>
+      </li>
+      <li class="reveal">
+        <span class="numero" aria-hidden="true">3</span>
+        <h3>Finaliser</h3>
+        <p>Relecture, tests, dépôt sur Moodle et préparation de l'oral.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ LISTE DES TÂCHES ============ -->
+  <section aria-labelledby="t-taches">
+    <h2 class="titre-section reveal" id="t-taches">Liste des tâches</h2>
+    <p class="intro reveal">Les tâches sont classées dans l'ordre de réalisation. Toutes sont terminées.</p>
+    <div class="tableau reveal">
+      <table>
+        <thead>
+          <tr><th scope="col">Tâche</th><th scope="col">Responsable</th><th scope="col">Avancement</th></tr>
+        </thead>
+        <tbody>
+          <tr class="etape"><td colspan="3">Étape 1 – Préparer le projet</td></tr>
+          <tr><td data-label="Tâche">Brainstorming (idées, structure, design, objectifs, public cible)</td><td data-label="Responsable">Tout le groupe</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+          <tr><td data-label="Tâche">Choix de coder tout le site en HTML/CSS</td><td data-label="Responsable">Tout le groupe</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+          <tr><td data-label="Tâche">Répartition des onglets entre les membres</td><td data-label="Responsable">Tout le groupe</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+          <tr><td data-label="Tâche">Choix de la charte graphique (couleurs et polices)</td><td data-label="Responsable">Nathan</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+
+          <tr class="etape"><td colspan="3">Étape 2 – Créer le site</td></tr>
+          <tr><td data-label="Tâche">Squelette commun : menu et feuille de style</td><td data-label="Responsable">Nathan</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+          <tr><td data-label="Tâche">Onglet 1 – Organisations (Paprec et défense des animaux)</td><td data-label="Responsable">Samuel</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+          <tr><td data-label="Tâche">Onglet 2 – Démarche</td><td data-label="Responsable">Nathan</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+          <tr><td data-label="Tâche">Onglet 3 – Empreinte écologique</td><td data-label="Responsable">Sofia et Fernande</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+          <tr><td data-label="Tâche">Onglet 4 – Charte numérique</td><td data-label="Responsable">Ahmad</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+          <tr><td data-label="Tâche">Onglet 5 – Découverte de Maubeuge</td><td data-label="Responsable">Fatoumata</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+
+          <tr class="etape"><td colspan="3">Étape 3 – Finaliser</td></tr>
+          <tr><td data-label="Tâche">Relecture et correction des fautes</td><td data-label="Responsable">Tout le groupe</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+          <tr><td data-label="Tâche">Test des liens et de l'affichage</td><td data-label="Responsable">Tout le groupe</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+          <tr><td data-label="Tâche">Dépôt du site sur Moodle</td><td data-label="Responsable">Tout le groupe</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+          <tr><td data-label="Tâche">Préparation de l'oral</td><td data-label="Responsable">Tout le groupe</td><td data-label="Avancement"><span class="statut">Terminé</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ CONCLUSION ============ -->
+  <section aria-labelledby="t-conclusion">
+    <div class="conclusion reveal">
+      <h2 id="t-conclusion">En résumé</h2>
+      <p>Notre groupe a suivi une démarche organisée, de la réflexion initiale à la conception du site, puis aux tests et à la préparation de la présentation finale.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer><strong>SAE 1.06</strong> – Découverte de Maubeuge</footer>
+
+<script>
+  /* ============ APPARITION AU SCROLL ============ */
+  var elements = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var observateur = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          observateur.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    elements.forEach(function (el, i) {
+      /* léger décalage entre cartes voisines d'une même grille */
+      var rang = Array.prototype.indexOf.call(el.parentNode.children, el) % 3;
+      el.style.transitionDelay = (rang * 0.08) + "s";
+      observateur.observe(el);
+    });
+  } else {
+    elements.forEach(function (el) { el.classList.add("visible"); });
+  }
+</script>
+
+</body>
+</html>

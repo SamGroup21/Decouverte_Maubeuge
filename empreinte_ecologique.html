@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="theme.js"></script>
+    <link href="navigation.css" rel="stylesheet">
+    <title>Empreinte écologique - SAE</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7f6;
+            color: #24332d;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e1e7e3;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 16px 25px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            flex: 1 0 100%;
+            font-weight: bold;
+            color: #277452;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .nav-container .nav-list {
+            justify-content: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #34443d;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #277452;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 80vh;
+            padding: 150px 25px 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #eaf5ef, #f8faf9);
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #d9eee2;
+            color: #277452;
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 7vw, 76px);
+            line-height: 1;
+            margin-bottom: 25px;
+            color: #1f3b2f;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #64736c;
+            font-size: 18px;
+        }
+
+        .scroll-button {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 13px 25px;
+            background: #277452;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .scroll-button:hover {
+            transform: translateY(-3px);
+            background: #1f6044;
+        }
+
+        /* GENERAL */
+        section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-title {
+            margin-bottom: 45px;
+        }
+
+        .section-title span {
+            color: #277452;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-top: 8px;
+            color: #20382d;
+        }
+
+        .section-title p {
+            margin-top: 10px;
+            color: #68766f;
+            max-width: 700px;
+        }
+
+        /* ORGANISATIONS */
+        .organisations {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .organisation-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #e2e9e5;
+            transition: 0.35s;
+        }
+
+        .organisation-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(35, 67, 52, 0.08);
+        }
+
+        .organisation-card .type {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+            color: #277452;
+            background: #e6f3eb;
+            padding: 5px 11px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+        }
+
+        .organisation-card h3 {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .organisation-card p {
+            color: #65736c;
+        }
+
+        /* COMPARAISON */
+        .table-wrapper {
+            overflow-x: auto;
+            background: white;
+            border-radius: 18px;
+            border: 1px solid #e1e7e3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th {
+            background: #e6f2eb;
+            color: #214936;
+            text-align: left;
+            padding: 18px;
+            font-size: 15px;
+        }
+
+        td {
+            padding: 20px 18px;
+            border-top: 1px solid #e8ecea;
+            vertical-align: top;
+            color: #56645e;
+        }
+
+        td:first-child {
+            font-weight: bold;
+            color: #2d4037;
+            width: 20%;
+        }
+
+        tr:hover td {
+            background: #fafcfb;
+        }
+
+        .info-note {
+            margin-top: 20px;
+            padding: 18px 20px;
+            background: #eef5f1;
+            border-left: 4px solid #277452;
+            border-radius: 8px;
+            color: #52625a;
+            font-size: 14px;
+        }
+
+        /* CARTE MENTALE */
+        .mindmap {
+            position: relative;
+            max-width: 1000px;
+            margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .mind-center {
+            grid-column: 1 / -1;
+            justify-self: center;
+            background: #277452;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(39, 116, 82, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .mind-card {
+            background: white;
+            padding: 23px;
+            border-radius: 16px;
+            border: 1px solid #e2e9e5;
+            transition: 0.3s;
+        }
+
+        .mind-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(35, 67, 52, 0.08);
+        }
+
+        .mind-card h3 {
+            color: #277452;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .mind-card ul {
+            padding-left: 18px;
+            color: #5e6c65;
+        }
+
+        .mind-card li {
+            margin-bottom: 6px;
+        }
+
+        .mind-note {
+            text-align: center;
+            margin-top: 30px;
+            color: #718078;
+            font-size: 14px;
+        }
+
+        /* SOURCES */
+        .sources {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .source-card {
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid #e2e9e5;
+        }
+
+        .source-card h3 {
+            margin-bottom: 12px;
+            color: #243d31;
+        }
+
+        .source-card p {
+            color: #69766f;
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+
+        .source-card a {
+            color: #277452;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .source-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #20382d;
+            color: #dce8e1;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 14px;
+        }
+
+        /* ANIMATION */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .organisations,
+            .sources {
+                grid-template-columns: 1fr;
+            }
+
+            .mindmap {
+                grid-template-columns: 1fr;
+            }
+
+            .mind-center {
+                grid-column: auto;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero {
+                padding-top: 150px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <link href="theme.css" rel="stylesheet">
+</head>
+
+<body class="theme-page theme-ecology">
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <!-- <div class="logo">SAE • Empreinte écologique</div> -->
+
+            <ul class="nav-list">
+                <li><a class="nav-link" href="index.html">Organisations</a></li>
+                <li><a class="nav-link" href="demarche.html">Démarche</a></li>
+                <li><a aria-current="page" class="nav-link actif" href="empreinte_ecologique.html">Empreinte écologique</a></li>
+                <li><a class="nav-link" href="charte_informatique.html">Charte numérique</a></li>
+                <li><a class="nav-link" href="decouverte_maubeuge.html">Découverte de Maubeuge</a></li>
+            </ul>
+            <button class="site-theme-toggle" data-theme-toggle type="button" aria-label="Passer au mode sombre" aria-pressed="false"><span aria-hidden="true" data-theme-icon>☾</span></button>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-content">
+            <!-- <span class="tag">SAE — Onglet 3</span> -->
+
+            <h1>Empreinte<br>écologique</h1>
+
+            <p>
+                Comparaison des actions et pratiques de
+                Paprec Energies de Maubeuge et du Refuge Édile Lacroix,
+                puis présentation de quelques solutions pour réduire
+                davantage l'impact écologique.
+            </p>
+
+            <a href="#organisations" class="scroll-button">
+                Découvrir le projet
+            </a>
+        </div>
+    </header>
+
+
+    <!-- ORGANISATIONS -->
+    <section id="organisations" class="reveal">
+
+        <div class="section-title">
+            <span>01 — Les organisations</span>
+            <h2>Deux structures différentes</h2>
+
+            <p>
+                Les deux organisations n'ont pas la même activité.
+                Il est donc important de prendre en compte leur rôle
+                avant de comparer leurs actions.
+            </p>
+        </div>
+
+        <div class="organisations">
+
+            <article class="organisation-card">
+                <span class="type">ENTREPRISE</span>
+
+                <h3>Paprec Energies</h3>
+
+                <p>
+                    Le site de Maubeuge est spécialisé dans la gestion
+                    et la valorisation des déchets. Il utilise notamment
+                    la valorisation énergétique et fait l'objet d'une
+                    modernisation visant notamment à améliorer ses
+                    performances énergétiques.
+                </p>
+            </article>
+
+
+            <article class="organisation-card">
+                <span class="type">ASSOCIATION</span>
+
+                <h3>Refuge Édile Lacroix</h3>
+
+                <p>
+                    Le Refuge Édile Lacroix est une association de
+                    protection animale. Il accueille des chiens et des
+                    chats et mène des actions autour des soins, de
+                    l'adoption et de la prévention.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMPARAISON -->
+    <section id="comparaison" class="reveal">
+
+        <div class="section-title">
+            <span>02 — Comparaison</span>
+
+            <h2>Actions et pratiques</h2>
+
+            <p>
+                Voici les principales actions et pratiques mises en avant
+                dans les informations disponibles sur les deux structures.
+            </p>
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Thème</th>
+                        <th>Paprec Energies — Maubeuge</th>
+                        <th>Refuge Édile Lacroix</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Activité</td>
+
+                        <td>
+                            Gestion et valorisation des déchets.
+                            Une partie des déchets peut être valorisée
+                            pour produire de l'énergie.
+                        </td>
+
+                        <td>
+                            Protection animale, accueil et prise en charge
+                            des chiens et des chats.
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Déchets</td>
+
+                        <td>
+                            Les déchets sont traités dans une logique
+                            de valorisation, notamment par la valorisation
+                            énergétique.
+                        </td>
+
+                        <td>
+                            La gestion du refuge est liée à l'accueil,
+                            aux soins et à l'alimentation des animaux.
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Énergie</td>
+
+                        <td>
+                            La valorisation énergétique permet de produire
+                            de l'énergie. Le site de Maubeuge fait aussi
+                            l'objet d'une modernisation pour améliorer
+                            ses performances énergétiques.
+                        </td>
+
+                        <td>
+                            Le refuge fonctionne principalement autour
+                            de sa mission de protection animale.
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Prévention</td>
+
+                        <td>
+                            La valorisation des déchets permet de limiter
+                            leur simple élimination en donnant une autre
+                            utilisation à une partie des déchets.
+                        </td>
+
+                        <td>
+                            Le refuge sensibilise notamment à la
+                            stérilisation et à l'adoption des animaux.
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Sensibilisation</td>
+
+                        <td>
+                            L'activité de Paprec est liée au tri,
+                            au recyclage et à la valorisation des déchets.
+                        </td>
+
+                        <td>
+                            L'association sensibilise à la protection
+                            animale, à l'adoption et à la stérilisation.
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Soutien</td>
+
+                        <td>
+                            Paprec développe des actions liées à la
+                            gestion et à la valorisation des déchets.
+                        </td>
+
+                        <td>
+                            Le refuge fonctionne notamment grâce aux dons
+                            de matériel, de nourriture et au soutien
+                            de personnes bénévoles.
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="info-note">
+            <strong>À retenir :</strong>
+            Paprec et le Refuge Édile Lacroix ont des missions très
+            différentes. Les actions de Paprec sont directement liées
+            à la gestion et à la valorisation des déchets, tandis que
+            le refuge a principalement une mission de protection animale.
+        </div>
+
+    </section>
+
+
+    <!-- IDEES -->
+    <section id="idees" class="reveal">
+
+        <div class="section-title">
+            <span>03 — Pistes d'amélioration</span>
+
+            <h2>Des idées pour réduire l'impact écologique</h2>
+
+            <p>
+                Ces propositions sont des pistes générales qui peuvent
+                être mises en place par une organisation pour limiter
+                son impact sur l'environnement.
+            </p>
+        </div>
+
+
+        <div class="mindmap">
+
+            <div class="mind-center">
+                Réduire l'impact écologique
+            </div>
+
+
+            <div class="mind-card">
+                <h3>⚡ Énergie</h3>
+
+                <ul>
+                    <li>Réduire les consommations</li>
+                    <li>Utiliser des équipements économes</li>
+                    <li>Améliorer l'isolation</li>
+                    <li>Développer les énergies renouvelables</li>
+                </ul>
+            </div>
+
+
+            <div class="mind-card">
+                <h3>🗑️ Déchets</h3>
+
+                <ul>
+                    <li>Mieux trier les déchets</li>
+                    <li>Réduire les déchets produits</li>
+                    <li>Limiter les emballages</li>
+                    <li>Éviter les produits à usage unique</li>
+                </ul>
+            </div>
+
+
+            <div class="mind-card">
+                <h3>💧 Eau</h3>
+
+                <ul>
+                    <li>Réduire le gaspillage</li>
+                    <li>Utiliser des équipements économes</li>
+                    <li>Surveiller les consommations</li>
+                </ul>
+            </div>
+
+
+            <div class="mind-card">
+                <h3>🚗 Transport</h3>
+
+                <ul>
+                    <li>Favoriser le covoiturage</li>
+                    <li>Encourager les transports collectifs</li>
+                    <li>Utiliser le vélo pour les petits trajets</li>
+                    <li>Utiliser des véhicules moins polluants</li>
+                </ul>
+            </div>
+
+
+            <div class="mind-card">
+                <h3>🛒 Achats</h3>
+
+                <ul>
+                    <li>Choisir des produits durables</li>
+                    <li>Limiter les produits jetables</li>
+                    <li>Privilégier les produits locaux lorsque possible</li>
+                    <li>Éviter le gaspillage</li>
+                </ul>
+            </div>
+
+
+            <div class="mind-card">
+                <h3>🏢 Locaux</h3>
+
+                <ul>
+                    <li>Améliorer l'efficacité des bâtiments</li>
+                    <li>Mieux gérer le chauffage</li>
+                    <li>Éviter de chauffer inutilement</li>
+                    <li>Végétaliser certains espaces</li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <p class="mind-note">
+            Ces idées sont des pistes d'amélioration générales et ne
+            correspondent pas forcément à des actions déjà mises en place
+            par les deux organisations.
+        </p>
+
+    </section>
+
+
+    <!-- SOURCES -->
+    <section id="sources" class="reveal">
+
+        <div class="section-title">
+            <span>04 — Sources</span>
+
+            <h2>Sources documentaires</h2>
+
+            <p>
+                Les informations sur les deux organisations ont été
+                recherchées à partir de leurs sources officielles.
+            </p>
+        </div>
+
+
+        <div class="sources">
+
+            <article class="source-card">
+
+                <h3>Paprec</h3>
+
+                <p>
+                    Site officiel de Paprec et informations concernant
+                    Paprec Energies à Maubeuge.
+                </p>
+
+                <a
+                    href="https://www.paprec.com/fr/contact-carte-des-agences/"
+                    target="_blank"
+                >
+                    Consulter la source →
+                </a>
+
+            </article>
+
+
+            <article class="source-card">
+
+                <h3>Paprec — Modernisation de Maubeuge</h3>
+
+                <p>
+                    Informations officielles sur le renouvellement du
+                    contrat et la modernisation du site de Maubeuge.
+                </p>
+
+                <a
+                    href="https://www.paprec.com/fr/un-contrat-renouvele-pour-paprec-energies-de-maubeuge-59/"
+                    target="_blank"
+                >
+                    Consulter la source →
+                </a>
+
+            </article>
+
+
+            <article class="source-card">
+
+                <h3>Refuge Édile Lacroix</h3>
+
+                <p>
+                    Présentation officielle de l'association, de son
+                    fonctionnement et de ses missions.
+                </p>
+
+                <a
+                    href="https://refuge-edilelacroix.fr/a-propos/"
+                    target="_blank"
+                >
+                    Consulter la source →
+                </a>
+
+            </article>
+
+
+            <article class="source-card">
+
+                <h3>Refuge — Notre activité</h3>
+
+                <p>
+                    Informations sur l'accueil des animaux, les soins,
+                    l'adoption et les actions de prévention.
+                </p>
+
+                <a
+                    href="https://refuge-edilelacroix.fr/notre-activite/"
+                    target="_blank"
+                >
+                    Consulter la source →
+                </a>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>SAE — Onglet 3 : Empreinte écologique • BUT Informatique</p>
+    </footer>
+
+
+    <script>
+        const elements = document.querySelectorAll(".reveal");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+        elements.forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
+
+</body>
+</html>
