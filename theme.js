@@ -38,6 +38,36 @@
                 setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark", true);
             });
         });
+
+        document.querySelectorAll(".mobile-menu-btn").forEach(function (button) {
+            var navigation = document.getElementById(button.getAttribute("aria-controls"));
+            if (!navigation) return;
+
+            function setMenuOpen(isOpen) {
+                navigation.classList.toggle("is-open", isOpen);
+                button.setAttribute("aria-expanded", String(isOpen));
+                button.setAttribute("aria-label", isOpen ? "Fermer le menu de navigation" : "Ouvrir le menu de navigation");
+                var icon = button.querySelector("[aria-hidden='true']");
+                if (icon) icon.textContent = isOpen ? "✕" : "☰";
+            }
+
+            button.addEventListener("click", function () {
+                setMenuOpen(button.getAttribute("aria-expanded") !== "true");
+            });
+
+            navigation.querySelectorAll(".nav-link").forEach(function (link) {
+                link.addEventListener("click", function () {
+                    setMenuOpen(false);
+                });
+            });
+
+            navigation.addEventListener("keydown", function (event) {
+                if (event.key === "Escape") {
+                    setMenuOpen(false);
+                    button.focus();
+                }
+            });
+        });
     }
 
     if (document.readyState === "loading") {

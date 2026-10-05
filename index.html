@@ -392,18 +392,6 @@ Créé en 1994 à La Courneuve, Paprec est le leader français du recyclage. Le 
 <!-- SCRIPT DE GESTION DU THÈME & DU CARROUSEL -->
 <script>
 (function() {
-  // 2. Navigation Mobile
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const siteNav = document.getElementById('site-nav');
-
-  if (mobileMenuBtn && siteNav) {
-    mobileMenuBtn.addEventListener('click', function() {
-      const isOpen = siteNav.classList.toggle('is-open');
-      mobileMenuBtn.setAttribute('aria-expanded', isOpen);
-      mobileMenuBtn.innerHTML = isOpen ? '✕' : '☰';
-    });
-  }
-
   // 3. Carrousel : images locales préchargées et fondu automatique
 const slides = [...document.querySelectorAll('.hero-slide')];
 const indicators = [...document.querySelectorAll('.indicator-dot')];
