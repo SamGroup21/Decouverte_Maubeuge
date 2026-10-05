@@ -62,7 +62,33 @@
     cursor: pointer;
 }
 
+.uphf-footer-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    padding: 6px 9px;
+    border-radius: 8px;
+    background: #fff;
+    line-height: 0;
+}
+
+.uphf-footer-logo img {
+    display: block;
+    width: 132px;
+    max-width: 100%;
+    max-height: 106px;
+    height: auto;
+    object-fit: contain;
+}
+
 @media (max-width: 768px) {
+    .uphf-footer-logo img {
+        width: 112px;
+        max-height: 90px;
+    }
+
     .main-nav:not(.is-open) .nav-list {
         display: none;
     }
